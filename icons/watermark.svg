@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Watermark: Semi-transparent stacked layers -->
+  <g transform="translate(25, 40)" opacity="0.3">
+    <!-- Layer 4 (top) -->
+    <rect x="42" y="0" width="65" height="24" rx="8" fill="#1A1A2E"/>
+    <!-- Layer 3 -->
+    <rect x="28" y="32" width="95" height="26" rx="8" fill="#1A1A2E"/>
+    <!-- Layer 2 -->
+    <rect x="12" y="66" width="125" height="26" rx="8" fill="#1A1A2E"/>
+    <!-- Layer 1 (bottom) -->
+    <rect x="0" y="100" width="150" height="28" rx="8" fill="#1A1A2E"/>
+  </g>
+</svg>

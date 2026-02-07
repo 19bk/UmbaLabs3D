@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TPU Flexible Printing | UmbaLabs 3D</title>
+  <meta name="description" content="Flexible TPU 3D printing in Nairobi. Durable, impact-resistant parts for grips, gaskets, and protective components.">
+  <link rel="canonical" href="https://umbalabs3d.saasita.space/tpu-printing.html">
+  <meta property="og:title" content="TPU Flexible Printing | UmbaLabs 3D">
+  <meta property="og:description" content="Flexible TPU prints for grips, gaskets, and impact-resistant parts.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://umbalabs3d.saasita.space/tpu-printing.html">
+  <meta property="og:image" content="https://umbalabs3d.saasita.space/umbalabs3d_logo.svg">
+  <link rel="icon" type="image/svg+xml" href="favicon_32.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --orange: #FF6B35;
+      --orange-dark: #e55a2b;
+      --navy: #1A1A2E;
+      --navy-light: #2d2d4a;
+      --gold: #F7B801;
+      --teal: #00D9C0;
+      --white: #FFFFFF;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-500: #6b7280;
+      --gray-700: #374151;
+      --gray-900: #111827;
+      --radius: 12px;
+      --radius-lg: 20px;
+      --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', -apple-system, sans-serif; color: var(--gray-900); line-height: 1.6; background: var(--white); }
+    h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; line-height: 1.2; }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .header { padding: 20px 0; border-bottom: 1px solid var(--gray-200); background: var(--white); position: sticky; top: 0; z-index: 10; }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--navy); }
+    .logo img { width: 36px; height: 36px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: var(--radius); font-weight: 600; border: none; cursor: pointer; }
+    .btn-primary { background: var(--orange); color: var(--white); }
+    .btn-primary:hover { background: var(--orange-dark); }
+    .btn-outline { border: 2px solid var(--gray-200); color: var(--gray-700); background: transparent; }
+    .hero { padding: 80px 0 40px; background: linear-gradient(180deg, var(--gray-50) 0%, var(--white) 100%); }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center; }
+    .hero h1 { font-size: clamp(2.2rem, 4vw, 3rem); color: var(--navy); margin-bottom: 16px; }
+    .hero p { color: var(--gray-500); font-size: 1.1rem; margin-bottom: 24px; }
+    .hero-card { background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--gray-200); box-shadow: var(--shadow); padding: 24px; }
+    .hero-card h3 { margin-bottom: 8px; }
+    .hero-card ul { list-style: none; color: var(--gray-700); font-size: 0.95rem; }
+    .hero-card li { padding: 6px 0; border-bottom: 1px solid var(--gray-100); }
+    .hero-card li:last-child { border-bottom: none; }
+    .section { padding: 60px 0; }
+    .section h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 12px; color: var(--navy); }
+    .section p { color: var(--gray-500); margin-bottom: 16px; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 20px; }
+    .card h3 { margin-bottom: 8px; }
+    .card p { color: var(--gray-500); font-size: 0.95rem; }
+    .cta { padding: 60px 0; background: var(--navy); color: var(--white); text-align: center; }
+    .cta p { color: rgba(255,255,255,0.7); margin: 12px auto 24px; max-width: 520px; }
+    .footer { padding: 32px 0; font-size: 0.9rem; color: var(--gray-500); text-align: center; }
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="/" class="logo"><img src="umbalabs3d_logo.svg" alt="UmbaLabs 3D"> UmbaLabs 3D</a>
+      <a href="https://umbalabs3d.saasita.space/#instant-quote" class="btn btn-primary">Get Instant Quote</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <h1>TPU Flexible Printing</h1>
+          <p>Flexible and impact-resistant parts for grips, gaskets, and protective components.</p>
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <a href="https://umbalabs3d.saasita.space/#instant-quote" class="btn btn-primary">Upload for Quote</a>
+            <a href="https://wa.me/254719281149?text=Hi%20UmbaLabs!%20I%20need%20a%20TPU%20flexible%203D%20print." class="btn btn-outline">Chat on WhatsApp</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <h3>Best for</h3>
+          <ul>
+            <li>Grips and handles</li>
+            <li>Gaskets and seals</li>
+            <li>Protective covers</li>
+            <li>Flexible prototypes</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>Why TPU</h2>
+        <p>TPU offers flexibility and durability for functional parts that need to bend or absorb impact.</p>
+        <div class="grid">
+          <div class="card"><h3>Flexible</h3><p>Compresses and bends without breaking.</p></div>
+          <div class="card"><h3>Durable</h3><p>Impact resistant for functional parts.</p></div>
+          <div class="card"><h3>Grip</h3><p>Great texture and friction for handles.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="background: var(--gray-50);">
+      <div class="container">
+        <h2>Common Use Cases</h2>
+        <p>We can help choose settings and orientation to balance flexibility and strength.</p>
+        <div class="grid">
+          <div class="card"><h3>Wearables</h3><p>Comfortable, flexible parts that move with you.</p></div>
+          <div class="card"><h3>Gaskets</h3><p>Seals and spacers for light-duty use.</p></div>
+          <div class="card"><h3>Protective Parts</h3><p>Bumpers and covers for devices.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <h2>Need a TPU print?</h2>
+        <p>Upload your STL for an instant final quote and place your order in seconds.</p>
+        <a href="https://umbalabs3d.saasita.space/#instant-quote" class="btn btn-primary">Get Instant Quote</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">&copy; 2026 UmbaLabs 3D. Nairobi, Kenya.</div>
+  </footer>
+  <script>
+    (function() {
+      const existing = sessionStorage.getItem('session_id');
+      const sessionId = existing || (function() {
+        const id = Math.random().toString(36).slice(2) + Date.now().toString(36);
+        sessionStorage.setItem('session_id', id);
+        return id;
+      })();
+
+      const params = new URLSearchParams(window.location.search);
+      const utm = {};
+      ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(key => {
+        const val = params.get(key);
+        if (val) utm[key] = val;
+      });
+      if (Object.keys(utm).length) {
+        utm.ts = Date.now();
+        localStorage.setItem('utm_params', JSON.stringify(utm));
+      }
+      let stored = {};
+      try { stored = JSON.parse(localStorage.getItem('utm_params') || '{}'); } catch (e) { stored = {}; }
+
+      fetch('/api/track', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          event: 'pageview',
+          page: window.location.pathname,
+          session_id: sessionId,
+          metadata: { ...stored, referrer: document.referrer }
+        })
+      }).catch(() => {});
+    })();
+  </script>
+</body>
+</html>

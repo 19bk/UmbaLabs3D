@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Dark Rounded Square Background (iOS style ~22% radius) -->
+  <rect width="512" height="512" rx="115" fill="#1A1A2E"/>
+  
+  <!-- Stacked Layers Icon -->
+  <g transform="translate(128, 120)">
+    <!-- Layer 4 (top) - White -->
+    <rect x="70" y="0" width="115" height="40" rx="12" fill="#FFFFFF"/>
+    <!-- Layer 3 - Teal -->
+    <rect x="45" y="55" width="165" height="45" rx="12" fill="#00D9C0"/>
+    <!-- Layer 2 - Gold -->
+    <rect x="20" y="115" width="215" height="45" rx="12" fill="#F7B801"/>
+    <!-- Layer 1 (bottom) - Orange -->
+    <rect x="0" y="175" width="255" height="50" rx="12" fill="#FF6B35"/>
+  </g>
+</svg>

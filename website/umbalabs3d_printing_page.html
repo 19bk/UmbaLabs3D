@@ -1,0 +1,742 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UmbaLabs 3D | Custom 3D Printing</title>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-orange: #ff6b35;
+      --primary-dark: #1a1a2e;
+      --accent-gold: #f7b801;
+      --accent-teal: #00d9c0;
+      --light-bg: #f8f9fa;
+      --white: #ffffff;
+      --gray-600: #6b7280;
+      --gray-200: #e6e7ea;
+      --shadow-soft: 0 24px 60px rgba(26, 26, 46, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: var(--light-bg);
+      color: var(--primary-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: -20% -10% auto;
+      height: 60vh;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255, 107, 53, 0.16), transparent 50%),
+        radial-gradient(circle at 70% 10%, rgba(0, 217, 192, 0.18), transparent 52%),
+        radial-gradient(circle at 90% 40%, rgba(247, 184, 1, 0.2), transparent 55%);
+      pointer-events: none;
+      z-index: -2;
+    }
+
+    body::after {
+      top: auto;
+      bottom: -20%;
+      height: 70vh;
+      background:
+        radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.12), transparent 55%),
+        radial-gradient(circle at 60% 70%, rgba(26, 26, 46, 0.08), transparent 60%),
+        radial-gradient(circle at 90% 90%, rgba(0, 217, 192, 0.14), transparent 45%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1200px, 92vw);
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: rgba(248, 249, 250, 0.8);
+      border-bottom: 1px solid rgba(26, 26, 46, 0.08);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-family: "Archivo Black", sans-serif;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      font-size: 1rem;
+    }
+
+    .brand img {
+      width: 42px;
+      height: 42px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      font-weight: 500;
+      color: var(--gray-600);
+      font-size: 0.95rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-orange);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 22px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--primary-orange);
+      color: var(--white);
+      box-shadow: 0 16px 30px rgba(255, 107, 53, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 40px rgba(255, 107, 53, 0.3);
+    }
+
+    .btn-ghost {
+      border-color: rgba(26, 26, 46, 0.2);
+      color: var(--primary-dark);
+      background: transparent;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--primary-orange);
+      color: var(--primary-orange);
+    }
+
+    .hero {
+      padding: 70px 0 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-family: "Archivo Black", sans-serif;
+      font-size: clamp(2.6rem, 4vw, 3.6rem);
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--gray-600);
+      margin-bottom: 24px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 26px;
+    }
+
+    .hero-highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+    }
+
+    .pill {
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(26, 26, 46, 0.06);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+
+    .hero-card {
+      background: var(--white);
+      border-radius: 26px;
+      padding: 28px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(26, 26, 46, 0.08);
+    }
+
+    .hero-card h3 {
+      font-family: "Archivo Black", sans-serif;
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+    }
+
+    .hero-card p {
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--gray-200);
+      font-family: inherit;
+      font-size: 0.95rem;
+      background: rgba(248, 249, 250, 0.7);
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .fine-print {
+      font-size: 0.8rem;
+      color: var(--gray-600);
+      margin-top: 10px;
+    }
+
+    .section {
+      padding: 60px 0 10px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 26px;
+    }
+
+    .section-title h2 {
+      font-family: "Archivo Black", sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+    }
+
+    .section-title span {
+      color: var(--gray-600);
+      font-size: 1rem;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--white);
+      padding: 22px;
+      border-radius: 18px;
+      border: 1px solid rgba(26, 26, 46, 0.08);
+      box-shadow: 0 14px 24px rgba(26, 26, 46, 0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 40px rgba(26, 26, 46, 0.1);
+    }
+
+    .card h4 {
+      font-family: "Archivo Black", sans-serif;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+
+    .card p {
+      color: var(--gray-600);
+      font-size: 0.95rem;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .badge {
+      background: rgba(255, 107, 53, 0.12);
+      color: var(--primary-dark);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    .badge.alt {
+      background: rgba(0, 217, 192, 0.12);
+    }
+
+    .badge.dark {
+      background: rgba(26, 26, 46, 0.08);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      align-items: stretch;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .thumb {
+      height: 140px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(255, 107, 53, 0.35), rgba(0, 217, 192, 0.3));
+      margin-bottom: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .thumb::after {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border-radius: 12px;
+      border: 1px dashed rgba(255, 255, 255, 0.7);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .price {
+      font-size: 2rem;
+      font-family: "Archivo Black", sans-serif;
+      color: var(--primary-orange);
+      margin: 10px 0;
+    }
+
+    .list {
+      display: grid;
+      gap: 8px;
+      color: var(--gray-600);
+      font-size: 0.95rem;
+    }
+
+    .faq {
+      display: grid;
+      gap: 14px;
+    }
+
+    .faq-item {
+      padding: 18px 20px;
+      border-radius: 14px;
+      background: rgba(26, 26, 46, 0.04);
+      border: 1px solid rgba(26, 26, 46, 0.08);
+    }
+
+    .cta {
+      margin: 60px 0 80px;
+      padding: 40px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, var(--primary-dark), #2d2d4a);
+      color: var(--white);
+      display: grid;
+      gap: 18px;
+    }
+
+    .cta h2 {
+      font-family: "Archivo Black", sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+    }
+
+    .cta p {
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .cta .btn-primary {
+      box-shadow: none;
+    }
+
+    footer {
+      padding: 30px 0 60px;
+      color: var(--gray-600);
+      font-size: 0.9rem;
+    }
+
+    .reveal {
+      animation: fadeUp 0.8s ease both;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 860px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .hero {
+        padding-top: 40px;
+      }
+
+      .hero-ctas {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .nav-links {
+        gap: 12px;
+        font-size: 0.85rem;
+      }
+
+      .cta {
+        padding: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#top">
+        <img src="umbalabs3d_icon.svg" alt="UmbaLabs 3D logo">
+        UmbaLabs 3D
+      </a>
+      <nav class="nav-links">
+        <a href="#process">Process</a>
+        <a href="#materials">Materials</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#community">Community</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="btn btn-primary" href="#quote">Get a fast quote</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="container hero">
+      <div class="reveal" style="animation-delay: 0.05s;">
+        <h1>3D prints that look premium, ship fast, and fit your budget.</h1>
+        <p>Upload a file or describe your idea. We check printability, suggest the best material, and deliver your parts ready to use.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#quote">Upload a 3D file</a>
+          <a class="btn btn-ghost" href="#contact">Get design help</a>
+        </div>
+        <div class="hero-highlights">
+          <div class="pill">Instant estimate</div>
+          <div class="pill">Material guidance</div>
+          <div class="pill">Local delivery</div>
+        </div>
+      </div>
+      <div class="hero-card reveal" style="animation-delay: 0.15s;" id="quote">
+        <h3>Get an instant quote</h3>
+        <p>Tell us the basics. We will respond with price, timeline, and next steps.</p>
+        <form class="form-grid">
+          <div>
+            <label for="project">Project name</label>
+            <input id="project" name="project" placeholder="e.g. Phone stand prototype" required>
+          </div>
+          <div>
+            <label for="contact">Email or WhatsApp</label>
+            <input id="contact" name="contact" placeholder="you@email.com or +254..." required>
+          </div>
+          <div>
+            <label for="file">Upload 3D file (STL, OBJ, STEP)</label>
+            <input id="file" type="file" name="file">
+          </div>
+          <div>
+            <label for="details">What should we know?</label>
+            <textarea id="details" name="details" placeholder="Size, quantity, finish, deadline"></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit">Get a fast quote</button>
+        </form>
+        <p class="fine-print">No file yet? Share a sketch or photo. We can model it for you.</p>
+      </div>
+    </section>
+
+    <section class="container section">
+      <div class="badge-row reveal" style="animation-delay: 0.05s;">
+        <span class="badge">Secure file handling</span>
+        <span class="badge alt">Quality checks on every part</span>
+        <span class="badge dark">Transparent pricing</span>
+        <span class="badge">Fast turnaround options</span>
+      </div>
+    </section>
+
+    <section class="container section" id="process">
+      <div class="section-title">
+        <h2>Simple, guided process</h2>
+        <span>Easy onboarding in three steps.</span>
+      </div>
+      <div class="card-grid">
+        <div class="card reveal" style="animation-delay: 0.05s;">
+          <h4>1. Upload or describe</h4>
+          <p>Send your 3D file or share a sketch. We run a quick printability check and flag any issues.</p>
+        </div>
+        <div class="card reveal" style="animation-delay: 0.1s;">
+          <h4>2. Choose material</h4>
+          <p>Select the finish and strength you need. We guide you toward the best option for cost and durability.</p>
+        </div>
+        <div class="card reveal" style="animation-delay: 0.15s;">
+          <h4>3. Print and deliver</h4>
+          <p>Approve the quote, then we print, finish, and deliver locally with photo updates along the way.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container section" id="materials">
+      <div class="section-title">
+        <h2>Materials that match your goal</h2>
+        <span>Prototype, end-use, or display.</span>
+      </div>
+      <div class="card-grid">
+        <div class="card reveal" style="animation-delay: 0.05s;">
+          <h4>PLA</h4>
+          <p>Clean finish for display models, gifts, and low-stress parts.</p>
+        </div>
+        <div class="card reveal" style="animation-delay: 0.1s;">
+          <h4>PETG</h4>
+          <p>Great for functional parts that need strength and light flexibility.</p>
+        </div>
+        <div class="card reveal" style="animation-delay: 0.15s;">
+          <h4>ABS</h4>
+          <p>Durable, heat resistant, and ideal for mechanical components.</p>
+        </div>
+        <div class="card reveal" style="animation-delay: 0.2s;">
+          <h4>Resin</h4>
+          <p>High-detail surfaces for miniatures, jewelry, and product mockups.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container section" id="use-cases">
+      <div class="section-title">
+        <h2>Popular use cases</h2>
+        <span>What customers build with us.</span>
+      </div>
+      <div class="card-grid">
+        <div class="card reveal" style="animation-delay: 0.05s;">
+          <h4>Rapid prototypes</h4>
+          <p>Validate fit, feel, and function before committing to production.</p>
+        </div>
+        <div class="card reveal" style="animation-delay: 0.1s;">
+          <h4>Architectural models</h4>
+          <p>Present clients with crisp, scaled-down building concepts.</p>
+        </div>
+        <div class="card reveal" style="animation-delay: 0.15s;">
+          <h4>Custom parts</h4>
+          <p>Replacement components, jigs, fixtures, and mechanical tools.</p>
+        </div>
+        <div class="card reveal" style="animation-delay: 0.2s;">
+          <h4>Personalized gifts</h4>
+          <p>Names, logos, and one-of-a-kind pieces for special moments.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container section" id="gallery">
+      <div class="section-title">
+        <h2>What a finished print looks like</h2>
+        <span>Swap these placeholders with real photos.</span>
+      </div>
+      <div class="gallery-grid">
+        <div class="card reveal" style="animation-delay: 0.05s;">
+          <div class="thumb"></div>
+          <h4>Architectural model</h4>
+          <p>Clean edges, matte finish, and accurate scale.</p>
+        </div>
+        <div class="card reveal" style="animation-delay: 0.1s;">
+          <div class="thumb"></div>
+          <h4>Functional prototype</h4>
+          <p>Test fit and assembly before production tooling.</p>
+        </div>
+        <div class="card reveal" style="animation-delay: 0.15s;">
+          <div class="thumb"></div>
+          <h4>Custom part</h4>
+          <p>Durable output with clear labeling and tolerances.</p>
+        </div>
+        <div class="card reveal" style="animation-delay: 0.2s;">
+          <div class="thumb"></div>
+          <h4>Gift or decor</h4>
+          <p>High-detail surfaces ready for finishing or paint.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container section" id="pricing">
+      <div class="section-title">
+        <h2>Transparent pricing</h2>
+        <span>Fast estimates, no surprises.</span>
+      </div>
+      <div class="pricing-grid">
+        <div class="card reveal" style="animation-delay: 0.05s;">
+          <h4>Small items</h4>
+          <div class="price">From KES 500</div>
+          <div class="list">
+            <span>Keychains, nameplates</span>
+            <span>Phone accessories</span>
+            <span>Fastest turnaround</span>
+          </div>
+        </div>
+        <div class="card reveal" style="animation-delay: 0.1s;">
+          <h4>Medium parts</h4>
+          <div class="price">From KES 1,200</div>
+          <div class="list">
+            <span>Desk organizers</span>
+            <span>Functional prototypes</span>
+            <span>Material choice matters</span>
+          </div>
+        </div>
+        <div class="card reveal" style="animation-delay: 0.15s;">
+          <h4>Large builds</h4>
+          <div class="price">Custom quote</div>
+          <div class="list">
+            <span>Architectural models</span>
+            <span>Cosplay props</span>
+            <span>Multi-part assemblies</span>
+          </div>
+        </div>
+      </div>
+      <p class="fine-print">Final pricing depends on size, material, complexity, and finish. We share a detailed quote before printing.</p>
+    </section>
+
+    <section class="container section" id="community">
+      <div class="section-title">
+        <h2>Built to be shared</h2>
+        <span>Turn every print into a story.</span>
+      </div>
+      <div class="split">
+        <div class="card reveal" style="animation-delay: 0.05s;">
+          <h4>Showcase your print</h4>
+          <p>We feature customer builds every week. Tag your print with #UmbaLabs3D and we will share it.</p>
+          <div class="badge-row">
+            <span class="badge">Community spotlight</span>
+            <span class="badge alt">Before/after reels</span>
+          </div>
+        </div>
+        <div class="card reveal" style="animation-delay: 0.1s;">
+          <h4>Referral-ready</h4>
+          <p>Invite a friend who needs a prototype and both of you receive a thank-you credit on your next order.</p>
+          <div class="badge-row">
+            <span class="badge dark">Ask about credits</span>
+            <span class="badge">Easy share link</span>
+          </div>
+        </div>
+        <div class="card reveal" style="animation-delay: 0.15s;">
+          <h4>Project journals</h4>
+          <p>We document the journey from idea to print. Perfect for startups, students, and makers.</p>
+          <div class="badge-row">
+            <span class="badge alt">Behind-the-scenes</span>
+            <span class="badge">Maker stories</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container section" id="faq">
+      <div class="section-title">
+        <h2>FAQs</h2>
+        <span>Quick answers before you start.</span>
+      </div>
+      <div class="faq">
+        <div class="faq-item reveal" style="animation-delay: 0.05s;">
+          <strong>What file types do you accept?</strong>
+          <p>Most common formats work: STL, OBJ, and STEP. If you have something else, send it anyway and we will advise.</p>
+        </div>
+        <div class="faq-item reveal" style="animation-delay: 0.1s;">
+          <strong>How long does a print take?</strong>
+          <p>Turnaround depends on size and material. Small items can be same-day or next-day, while large builds take longer.</p>
+        </div>
+        <div class="faq-item reveal" style="animation-delay: 0.15s;">
+          <strong>Can you help with design?</strong>
+          <p>Yes. Send a sketch, reference photo, or concept and we can build the 3D model for you.</p>
+        </div>
+        <div class="faq-item reveal" style="animation-delay: 0.2s;">
+          <strong>Is my design confidential?</strong>
+          <p>We handle files privately and only use them for production unless you request a showcase.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container cta" id="contact">
+      <h2>Ready to print something great?</h2>
+      <p>Tell us what you want to build. We will respond with a clear quote, timeline, and the best material for the job.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#quote">Start a quote</a>
+        <a class="btn btn-ghost" href="mailto:hello@umbalabs3d.com">Email hello@umbalabs3d.com</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <p>UmbaLabs 3D. Nairobi, Kenya. Custom 3D printing, prototypes, and product models.</p>
+  </footer>
+</body>
+</html>

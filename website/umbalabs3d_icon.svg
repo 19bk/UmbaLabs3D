@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <!-- Background Circle -->
+  <circle cx="200" cy="200" r="195" fill="#1A1A2E"/>
+  
+  <!-- Layered 3D Icon - Centered and Larger -->
+  <g transform="translate(75, 95)">
+    <!-- Layer 4 (top) - White -->
+    <rect x="70" y="30" width="110" height="30" rx="8" fill="#FFFFFF"/>
+    
+    <!-- Layer 3 - Teal -->
+    <rect x="45" y="75" width="160" height="35" rx="8" fill="#00D9C0"/>
+    
+    <!-- Layer 2 - Gold -->
+    <rect x="20" y="125" width="210" height="35" rx="8" fill="#F7B801"/>
+    
+    <!-- Layer 1 (bottom) - Orange -->
+    <rect x="0" y="175" width="250" height="38" rx="8" fill="#FF6B35"/>
+  </g>
+</svg>

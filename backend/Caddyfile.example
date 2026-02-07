@@ -1,0 +1,35 @@
+# Caddy configuration for UmbaLabs 3D
+# Merge this into your existing /etc/caddy/Caddyfile
+
+umbalabs3d.saasita.space {
+    # Allow large file uploads (100MB)
+    request_body {
+        max_size 100MB
+    }
+
+    # API routes -> Flask backend
+    handle /api/* {
+        reverse_proxy 127.0.0.1:5000
+    }
+
+    # Static files
+    handle {
+        root * /var/www/umbalabs3d
+        file_server
+    }
+
+    # Security headers
+    header {
+        X-Content-Type-Options "nosniff"
+        X-Frame-Options "SAMEORIGIN"
+        Referrer-Policy "strict-origin-when-cross-origin"
+    }
+
+    # Enable gzip compression
+    encode gzip
+
+    # Logging
+    log {
+        output file /var/log/caddy/umbalabs3d.log
+    }
+}

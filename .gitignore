@@ -1,0 +1,51 @@
+# Environment and secrets
+.env
+*.env
+.env.*
+secrets.json
+credentials.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+ENV/
+
+# Database (local testing)
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Claude Code
+.claude/
+
+# Uploads (don't commit customer files)
+uploads/
+*.stl
+*.obj
+*.step
+*.stp
+*.3mf
+
+# Backups
+*.backup
+*_backup.*

@@ -1,0 +1,1625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UmbaLabs 3D | 3D Printing Service Kenya</title>
+  <meta name="description" content="Professional 3D printing service in Nairobi, Kenya. Upload your STL for an instant final quote and fast production. M-Pesa accepted.">
+  <meta name="keywords" content="3D printing Kenya, 3D printing Nairobi, custom 3D prints, rapid prototyping Kenya, TPU printing Nairobi">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://umbalabs3d.saasita.space/">
+
+  <meta property="og:title" content="UmbaLabs 3D | Instant 3D Print Quotes">
+  <meta property="og:description" content="Upload your STL, get an instant final quote, and print locally in Nairobi.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://umbalabs3d.saasita.space">
+  <meta property="og:image" content="https://umbalabs3d.saasita.space/umbalabs3d_logo.svg">
+  <meta property="og:site_name" content="UmbaLabs 3D">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="UmbaLabs 3D | Instant 3D Print Quotes">
+  <meta name="twitter:description" content="Upload your STL, get an instant final quote, and print locally in Nairobi.">
+  <meta name="twitter:image" content="https://umbalabs3d.saasita.space/umbalabs3d_logo.svg">
+
+  <link rel="icon" type="image/svg+xml" href="favicon_32.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "UmbaLabs 3D",
+      "url": "https://umbalabs3d.saasita.space/",
+      "image": "https://umbalabs3d.saasita.space/umbalabs3d_logo.svg",
+      "telephone": "+254719281149",
+      "areaServed": "Nairobi, Kenya",
+      "priceRange": "KES 500+",
+      "serviceType": "3D printing",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "KES",
+        "price": "500",
+        "description": "Instant final quote for custom 3D printing."
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --orange: #FF6B35;
+      --orange-dark: #e55a2b;
+      --navy: #1A1A2E;
+      --navy-light: #2d2d4a;
+      --gold: #F7B801;
+      --teal: #00D9C0;
+      --white: #FFFFFF;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-500: #6b7280;
+      --gray-600: #4b5563;
+      --gray-700: #374151;
+      --gray-900: #111827;
+      --whatsapp: #25D366;
+      --radius: 12px;
+      --radius-lg: 20px;
+      --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+      --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: var(--gray-900);
+      line-height: 1.6;
+      background: var(--white);
+    }
+
+    h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; line-height: 1.2; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .text-link { color: var(--orange); font-weight: 600; }
+    .text-link:hover { text-decoration: underline; }
+
+    /* Header */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+      gap: 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--navy);
+    }
+
+    .logo img { width: 40px; height: 40px; }
+
+    .nav { display: flex; align-items: center; gap: 32px; }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { font-size: 0.95rem; font-weight: 500; color: var(--gray-600); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--orange); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary { background: var(--orange); color: var(--white); }
+    .btn-primary:hover { background: var(--orange-dark); transform: translateY(-1px); }
+    .btn-whatsapp { background: var(--whatsapp); color: var(--white); }
+    .btn-whatsapp:hover { background: #20bd5a; }
+    .btn-outline { background: transparent; border: 2px solid var(--gray-300); color: var(--gray-700); }
+    .btn-outline:hover { border-color: var(--orange); color: var(--orange); }
+    .btn-large { padding: 16px 32px; font-size: 1.05rem; }
+
+    /* Hero */
+    .hero {
+      padding: 80px 0 60px;
+      background: linear-gradient(180deg, var(--gray-50) 0%, var(--white) 100%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      color: var(--navy);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span { color: var(--orange); }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: var(--gray-600);
+      margin-bottom: 32px;
+      max-width: 500px;
+    }
+
+    .hero-ctas { display: flex; gap: 16px; margin-bottom: 40px; flex-wrap: wrap; }
+    .hero-list {
+      list-style: none;
+      margin: -12px 0 28px;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+      color: var(--gray-600);
+      font-size: 0.95rem;
+    }
+    .hero-list li { display: flex; align-items: center; gap: 10px; }
+    .hero-list .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--teal);
+      display: inline-block;
+    }
+
+    .hero-stats { display: flex; gap: 40px; }
+    .stat { text-align: left; }
+    .stat-value { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--navy); }
+    .stat-label { font-size: 0.875rem; color: var(--gray-500); }
+
+    .hero-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--gray-200);
+    }
+
+    .hero-card h3 { font-size: 1.25rem; margin-bottom: 8px; color: var(--navy); }
+    .hero-card > p { color: var(--gray-500); margin-bottom: 24px; }
+
+    .upload-area {
+      border: 2px dashed var(--gray-300);
+      border-radius: var(--radius);
+      padding: 40px 24px;
+      text-align: center;
+      margin-bottom: 20px;
+      transition: all 0.2s;
+      cursor: pointer;
+      display: block;
+    }
+
+    .upload-area:hover { border-color: var(--orange); background: rgba(255, 107, 53, 0.03); }
+    .upload-icon { width: 48px; height: 48px; margin: 0 auto 12px; font-size: 2.5rem; }
+    .upload-text { font-weight: 600; color: var(--gray-700); margin-bottom: 4px; }
+    .upload-hint { font-size: 0.875rem; color: var(--gray-500); }
+    .divider-text { text-align: center; color: var(--gray-400); font-size: 0.875rem; margin: 16px 0; }
+
+    .file-formats { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+    .format-tag { background: var(--gray-100); color: var(--gray-600); padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; }
+
+    /* Form styles */
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 0.875rem; font-weight: 500; color: var(--gray-700); margin-bottom: 6px; }
+    .form-group input { width: 100%; padding: 12px 14px; border: 1px solid var(--gray-300); border-radius: var(--radius); font-size: 0.95rem; transition: border-color 0.2s, box-shadow 0.2s; }
+    .form-group input:focus { outline: none; border-color: var(--orange); box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1); }
+    .form-group input::placeholder { color: var(--gray-400); }
+
+    /* Upload status messages */
+    #orderStatus, #uploadStatus { margin-top: 16px; padding: 12px 16px; border-radius: var(--radius); font-size: 0.9rem; display: none; }
+    #orderStatus.success, #uploadStatus.success { display: block; background: rgba(0, 217, 192, 0.1); color: #0a8a7a; border: 1px solid var(--teal); }
+    #orderStatus.error, #uploadStatus.error { display: block; background: rgba(239, 68, 68, 0.1); color: #dc2626; border: 1px solid #fca5a5; }
+    #orderStatus.loading, #uploadStatus.loading { display: block; background: rgba(255, 107, 53, 0.1); color: var(--orange); border: 1px solid var(--orange); }
+
+    /* Drag and drop states */
+    .upload-area.dragover { border-color: var(--orange); background: rgba(255, 107, 53, 0.05); transform: scale(1.01); }
+    .upload-area.analyzing { border-color: var(--gold); background: rgba(247, 184, 1, 0.05); }
+    .upload-area .upload-icon { color: var(--gray-400); }
+
+    /* Instant Quote UI */
+    .quote-results { animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    .quote-steps {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.8rem;
+      color: var(--gray-500);
+      margin-bottom: 16px;
+    }
+    .quote-step {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--gray-200);
+      background: var(--gray-50);
+      font-weight: 600;
+    }
+    .quote-step.active {
+      background: rgba(255, 107, 53, 0.12);
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+    .quote-step-divider { color: var(--gray-300); font-weight: 700; }
+
+    .quote-file-info { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: var(--gray-50); border-radius: var(--radius); margin-bottom: 16px; }
+    .quote-file-info span { font-weight: 500; font-size: 0.9rem; color: var(--navy); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 200px; }
+    .btn-link { background: none; border: none; color: var(--orange); font-size: 0.85rem; cursor: pointer; font-weight: 500; }
+    .btn-link:hover { text-decoration: underline; }
+
+    .quote-dimensions { display: flex; gap: 16px; margin-bottom: 16px; font-size: 0.85rem; color: var(--gray-600); }
+    .quote-dimensions span { display: flex; align-items: center; gap: 4px; }
+
+    .unit-confirm {
+      padding: 12px 14px;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      background: var(--gray-50);
+      margin-bottom: 16px;
+    }
+    .unit-title { font-weight: 600; color: var(--navy); font-size: 0.9rem; }
+    .unit-subtitle { font-size: 0.8rem; color: var(--gray-500); margin-top: 4px; }
+    .unit-actions { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+    .unit-btn {
+      border: 1px solid var(--gray-300);
+      background: var(--white);
+      border-radius: 8px;
+      padding: 6px 10px;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+    .unit-btn.selected { border-color: var(--orange); background: rgba(255, 107, 53, 0.08); }
+    .unit-hint { font-size: 0.75rem; color: var(--gray-500); margin-top: 6px; }
+
+    .quote-estimate {
+      font-size: 0.85rem;
+      color: var(--gray-600);
+      margin-bottom: 16px;
+    }
+    .estimate-note {
+      font-size: 0.8rem;
+      color: var(--gray-500);
+      margin-top: 6px;
+    }
+    .quote-limitations {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 12px 14px;
+      margin-bottom: 16px;
+      font-size: 0.85rem;
+      color: var(--gray-600);
+    }
+    .quote-limitations ul {
+      list-style: none;
+      margin-top: 8px;
+    }
+    .quote-limitations li {
+      padding: 4px 0;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+    .quote-limitations li::before {
+      content: "•";
+      color: var(--orange);
+      font-weight: 700;
+    }
+
+    #quotePrintability { margin-bottom: 16px; }
+    .printability-ok { color: var(--teal); font-size: 0.85rem; font-weight: 500; }
+    .printability-warning { color: var(--gold); font-size: 0.85rem; padding: 8px 12px; background: rgba(247, 184, 1, 0.1); border-radius: 8px; }
+    .printability-error { color: #dc2626; font-size: 0.85rem; padding: 8px 12px; background: rgba(239, 68, 68, 0.1); border-radius: 8px; }
+
+    .quote-materials { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+    .material-option { display: flex; align-items: center; padding: 14px 16px; border: 2px solid var(--gray-200); border-radius: var(--radius); cursor: pointer; transition: all 0.2s; }
+    .material-option:hover { border-color: var(--gray-300); }
+    .material-option.selected { border-color: var(--orange); background: rgba(255, 107, 53, 0.03); }
+    .material-option input { display: none; }
+    .material-option .material-info { flex: 1; }
+    .material-option .material-name { font-weight: 600; font-size: 0.95rem; color: var(--navy); }
+    .material-option .material-desc { font-size: 0.8rem; color: var(--gray-500); margin-top: 2px; }
+    .material-option .material-price { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--orange); white-space: nowrap; }
+    .material-option .material-time { font-size: 0.75rem; color: var(--gray-500); margin-top: 2px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+    @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
+
+    #submitBtn { display: flex; justify-content: center; gap: 8px; }
+    #btnPrice { background: rgba(255,255,255,0.2); padding: 2px 10px; border-radius: 6px; font-size: 0.9rem; }
+
+
+    /* Sections */
+    .section { padding: 80px 0; }
+    .section-header { text-align: center; max-width: 600px; margin: 0 auto 48px; }
+    .section-label { display: inline-block; background: rgba(255, 107, 53, 0.1); color: var(--orange); padding: 6px 14px; border-radius: 20px; font-size: 0.875rem; font-weight: 600; margin-bottom: 16px; }
+    .section-title { font-size: clamp(1.75rem, 3vw, 2.5rem); color: var(--navy); margin-bottom: 16px; }
+    .section-subtitle { color: var(--gray-500); font-size: 1.1rem; }
+
+    /* Steps */
+    .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .step { text-align: center; padding: 32px 24px; }
+    .step-number { width: 56px; height: 56px; background: var(--orange); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; margin: 0 auto 20px; }
+    .step h3 { font-size: 1.25rem; color: var(--navy); margin-bottom: 12px; }
+    .step p { color: var(--gray-500); font-size: 0.95rem; }
+
+    /* Materials */
+    .materials-section { background: var(--gray-50); }
+    .materials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .material-card { background: var(--white); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; }
+    .material-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .material-image { height: 160px; background: linear-gradient(135deg, var(--gray-100), var(--gray-200)); display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+    .material-content { padding: 24px; }
+    .material-content h3 { font-size: 1.2rem; color: var(--navy); margin-bottom: 8px; }
+    .material-content > p { color: var(--gray-500); font-size: 0.9rem; margin-bottom: 16px; }
+    .material-props { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .prop { font-size: 0.8rem; }
+    .prop-label { color: var(--gray-500); }
+    .prop-value { font-weight: 600; color: var(--gray-700); }
+    .material-price { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--gray-200); font-size: 0.9rem; }
+    .material-price span { font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: var(--orange); font-size: 1.1rem; }
+
+    /* Services */
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .service-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 32px; transition: all 0.2s; }
+    .service-card:hover { border-color: var(--orange); box-shadow: var(--shadow); }
+    .service-icon { width: 48px; height: 48px; background: rgba(255, 107, 53, 0.1); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 1.5rem; }
+    .service-card h3 { font-size: 1.2rem; color: var(--navy); margin-bottom: 12px; }
+    .service-card p { color: var(--gray-500); font-size: 0.95rem; margin-bottom: 16px; }
+    .service-features { list-style: none; }
+    .service-features li { padding: 6px 0; font-size: 0.9rem; color: var(--gray-600); display: flex; align-items: center; gap: 8px; }
+    .service-features li::before { content: "✓"; color: var(--teal); font-weight: 700; }
+
+    /* Pricing */
+    .pricing-section { background: var(--navy); color: var(--white); }
+    .pricing-section .section-label { background: rgba(255, 255, 255, 0.1); color: var(--gold); }
+    .pricing-section .section-title { color: var(--white); }
+    .pricing-section .section-subtitle { color: rgba(255, 255, 255, 0.7); }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .pricing-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: var(--radius-lg); padding: 32px; text-align: center; }
+    .pricing-card.featured { background: var(--orange); border-color: var(--orange); transform: scale(1.05); }
+    .pricing-size { font-size: 0.9rem; color: rgba(255, 255, 255, 0.7); margin-bottom: 8px; }
+    .pricing-card.featured .pricing-size { color: rgba(255, 255, 255, 0.9); }
+    .pricing-card h3 { font-size: 1.3rem; margin-bottom: 16px; }
+    .pricing-amount { font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; font-weight: 700; margin-bottom: 8px; }
+    .pricing-unit { font-size: 0.875rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 24px; }
+    .pricing-card.featured .pricing-unit { color: rgba(255, 255, 255, 0.8); }
+    .pricing-examples { text-align: left; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7); list-style: none; }
+    .pricing-card.featured .pricing-examples { color: rgba(255, 255, 255, 0.9); }
+    .pricing-examples li { padding: 6px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+    .pricing-examples li:last-child { border-bottom: none; }
+    .pricing-note { text-align: center; margin-top: 40px; color: rgba(255, 255, 255, 0.6); font-size: 0.9rem; }
+
+    /* Trust strip */
+    .trust-strip {
+      background: var(--navy);
+      color: var(--white);
+      padding: 22px 0;
+    }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      align-items: center;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    .trust-item { display: flex; flex-direction: column; gap: 6px; }
+    .trust-title { font-weight: 700; }
+    .trust-subtitle { color: rgba(255,255,255,0.7); }
+
+    /* Add-ons & bundles */
+    .addons-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .addons-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+    .addons-card h3 { margin-bottom: 8px; }
+    .addons-card ul { list-style: none; margin-top: 16px; color: var(--gray-600); font-size: 0.9rem; }
+    .addons-card ul li { padding: 6px 0; border-bottom: 1px solid var(--gray-100); }
+    .addons-card ul li:last-child { border-bottom: none; }
+
+    /* Project highlights */
+    .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .project-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+    .project-icon { font-size: 2rem; margin-bottom: 12px; }
+    .project-card h3 { margin-bottom: 8px; }
+    .project-card p { color: var(--gray-600); font-size: 0.95rem; margin-bottom: 12px; }
+    .project-meta { font-size: 0.85rem; color: var(--gray-500); }
+    .gallery-cta { text-align: center; margin-top: 32px; }
+
+    /* Why Us */
+    .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .why-card { text-align: center; padding: 24px; }
+    .why-icon { width: 64px; height: 64px; background: var(--gray-100); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 1.75rem; }
+    .why-card h3 { font-size: 1.1rem; color: var(--navy); margin-bottom: 8px; }
+    .why-card p { color: var(--gray-500); font-size: 0.9rem; }
+
+    /* FAQ */
+    .faq-section { background: var(--gray-50); }
+    .faq-grid { max-width: 800px; margin: 0 auto; }
+    .faq-item { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); margin-bottom: 12px; overflow: hidden; }
+    .faq-item summary { padding: 20px 24px; font-weight: 600; color: var(--navy); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: "+"; font-size: 1.5rem; color: var(--gray-400); transition: transform 0.2s; }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-item p { padding: 0 24px 20px; color: var(--gray-600); font-size: 0.95rem; }
+
+    /* CTA Section */
+    .cta-section { padding: 100px 0; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); text-align: center; color: var(--white); }
+    .cta-section h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 16px; }
+    .cta-section p { color: rgba(255, 255, 255, 0.7); font-size: 1.1rem; margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .cta-section .btn-outline { border-color: rgba(255, 255, 255, 0.3); color: var(--white); }
+    .cta-section .btn-outline:hover { border-color: var(--white); background: rgba(255, 255, 255, 0.1); }
+
+    /* Footer */
+    .footer { background: var(--gray-900); color: var(--gray-400); padding: 60px 0 30px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-brand p { margin-top: 16px; font-size: 0.9rem; line-height: 1.7; }
+    .footer-title { color: var(--white); font-family: 'Space Grotesk', sans-serif; font-weight: 600; margin-bottom: 20px; }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 12px; }
+    .footer-links a { font-size: 0.9rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--orange); }
+    .footer-bottom { padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; justify-content: space-between; align-items: center; font-size: 0.875rem; }
+    .payment-methods { display: flex; align-items: center; gap: 16px; }
+    .payment-badge { background: rgba(255, 255, 255, 0.1); padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; }
+
+    /* Floating WhatsApp */
+    .float-whatsapp { position: fixed; bottom: 24px; right: 24px; z-index: 1000; background: var(--whatsapp); color: var(--white); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); transition: transform 0.2s, box-shadow 0.2s; }
+    .float-whatsapp:hover { transform: scale(1.1); box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5); }
+    .float-whatsapp svg { width: 32px; height: 32px; }
+
+    /* Design Services */
+    .design-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    .design-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      text-align: center;
+      transition: all 0.3s;
+      position: relative;
+    }
+    .design-card:hover {
+      background: rgba(255,255,255,0.08);
+      transform: translateY(-4px);
+      border-color: rgba(255,255,255,0.2);
+    }
+    .design-card.featured {
+      background: rgba(255, 107, 53, 0.15);
+      border-color: var(--orange);
+    }
+    .design-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--orange);
+      color: white;
+      padding: 4px 16px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .design-icon {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+    .design-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+      color: var(--white);
+    }
+    .design-card p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    .design-price {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 4px;
+    }
+    .design-price span {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--gold);
+    }
+    .design-time {
+      font-size: 0.8rem;
+      color: var(--teal);
+    }
+    .design-cta {
+      text-align: center;
+      padding-top: 16px;
+    }
+    .design-cta p {
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 20px;
+    }
+    @media (max-width: 1024px) {
+      .design-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .design-grid { grid-template-columns: 1fr; }
+    }
+
+    /* 3D Scanning Banner */
+    .scanning-banner {
+      margin-top: 48px;
+      padding: 32px;
+      background: linear-gradient(135deg, rgba(0, 217, 192, 0.1) 0%, rgba(247, 184, 1, 0.1) 100%);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius-lg);
+      position: relative;
+      overflow: hidden;
+    }
+    .scanning-banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.5;
+    }
+    .scanning-content {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .scanning-badge {
+      position: absolute;
+      top: -32px;
+      right: -32px;
+      background: var(--teal);
+      color: var(--navy);
+      padding: 6px 24px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      transform: rotate(12deg);
+    }
+    .scanning-icon {
+      font-size: 3rem;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+    .scanning-text {
+      flex: 1;
+      min-width: 200px;
+    }
+    .scanning-text h3 {
+      font-size: 1.25rem;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .scanning-text p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+      margin: 0;
+    }
+    @media (max-width: 600px) {
+      .scanning-content { flex-direction: column; text-align: center; }
+      .scanning-badge { top: -24px; right: 50%; transform: translateX(50%) rotate(0); }
+    }
+
+    /* Mobile */
+    .mobile-menu-btn { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--navy); }
+
+    @media (max-width: 1024px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .steps-grid, .materials-grid, .services-grid, .pricing-grid { grid-template-columns: 1fr; gap: 20px; }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+      .project-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .pricing-card.featured { transform: none; }
+      .trust-grid { grid-template-columns: repeat(2, 1fr); }
+      .addons-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .mobile-menu-btn { display: block; }
+      .header .btn { padding: 10px 16px; font-size: 0.875rem; }
+      .hero { padding: 40px 0; }
+      .hero h1 { font-size: 2rem; }
+      .hero-stats { flex-direction: column; gap: 16px; }
+      .section { padding: 60px 0; }
+      .why-grid { grid-template-columns: 1fr; }
+      .project-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+      .trust-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#" class="logo">
+        <img src="umbalabs3d_logo.svg" alt="UmbaLabs 3D" style="height: 40px; width: auto;">
+      </a>
+      <nav class="nav">
+        <div class="nav-links">
+          <a href="#how-it-works">How It Works</a>
+          <a href="#materials">Materials</a>
+          <a href="#services">Services</a>
+          <a href="#addons">Add-ons</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#faq">FAQ</a>
+        </div>
+        <a href="#instant-quote" class="btn btn-primary">Get Instant Quote</a>
+      </nav>
+      <button class="mobile-menu-btn">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <h1>3D Printing <span>Made Simple</span> in Kenya</h1>
+          <p class="hero-subtitle">Upload your design, get an instant final quote, and receive your print fast. Faster and easier than importing.</p>
+          <ul class="hero-list">
+            <li><span class="dot"></span>Final quote in seconds</li>
+            <li><span class="dot"></span>Clear print limitations upfront</li>
+            <li><span class="dot"></span>Pickup or delivery in Nairobi</li>
+          </ul>
+          <div class="hero-ctas">
+            <a href="#instant-quote" class="btn btn-primary btn-large">Get Instant Quote</a>
+            <a href="https://wa.me/254719281149?text=Hi%20UmbaLabs!%20I%27d%20like%20a%20quote%20for%203D%20printing." class="btn btn-outline btn-large">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Chat on WhatsApp
+            </a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat"><div class="stat-value">2-3 Days</div><div class="stat-label">Average turnaround</div></div>
+            <div class="stat"><div class="stat-value">No Minimum</div><div class="stat-label">Order any quantity</div></div>
+            <div class="stat"><div class="stat-value">M-Pesa</div><div class="stat-label">Payment accepted</div></div>
+          </div>
+        </div>
+        <div class="hero-card" id="instant-quote">
+          <h3>Instant Final Quote</h3>
+          <p>Upload your STL file and get a final quote instantly</p>
+
+          <div class="quote-steps" id="quoteSteps">
+            <div class="quote-step active" data-step="upload">Upload</div>
+            <span class="quote-step-divider">→</span>
+            <div class="quote-step" data-step="estimate">Final Quote</div>
+            <span class="quote-step-divider">→</span>
+            <div class="quote-step" data-step="final">Place Order</div>
+          </div>
+
+          <!-- Step 1: File Upload -->
+          <div id="step1">
+            <label class="upload-area" id="dropzone" for="file">
+              <input type="file" id="file" name="file" accept=".stl" hidden>
+              <div class="upload-icon" id="uploadIcon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              </div>
+              <div class="upload-text" id="fileLabel">Drop your 3D file or click to browse</div>
+              <div class="upload-hint">STL files only (instant final quote)</div>
+            </label>
+            <div id="uploadStatus"></div>
+          </div>
+
+          <!-- Step 2: Instant Final Quote Results (hidden initially) -->
+          <div id="step2" class="quote-results" style="display: none;">
+            <div class="quote-file-info">
+              <span id="quoteFileName"></span>
+              <button type="button" id="changeFile" class="btn-link">Change</button>
+            </div>
+
+            <div class="quote-dimensions">
+              <span id="quoteDimensions"></span>
+              <span id="quoteVolume"></span>
+            </div>
+
+            <div class="unit-confirm" id="unitConfirm" style="display: none;">
+              <div class="unit-title">Confirm units</div>
+              <div class="unit-subtitle">STL files don't include units. Are these dimensions correct?</div>
+              <div class="unit-actions">
+                <button type="button" class="unit-btn" data-unit="mm">Millimeters (mm)</button>
+                <button type="button" class="unit-btn" data-unit="in">Inches (in)</button>
+              </div>
+              <div class="unit-hint" id="unitHint"></div>
+            </div>
+
+            <div class="quote-estimate" id="quoteEstimate"></div>
+            <div class="estimate-note">Final quote is instant based on standard settings and the limits below.</div>
+
+            <div id="quotePrintability"></div>
+            <div id="quoteLimitations" class="quote-limitations"></div>
+
+            <div class="quote-materials" id="quoteMaterials"></div>
+
+            <form id="orderForm">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input type="text" id="name" name="name" required placeholder="Your name">
+                </div>
+                <div class="form-group">
+                  <label for="phone">WhatsApp</label>
+                  <input type="tel" id="phone" name="phone" required placeholder="0712345678">
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary" id="submitBtn" style="width: 100%;">
+                <span id="btnText">Place Order</span>
+                <span id="btnPrice"></span>
+              </button>
+            </form>
+            <div class="estimate-note">We keep your file for easy reorders. Ask for delivery or finishing.</div>
+            <div id="orderStatus" aria-live="polite"></div>
+          </div>
+
+          <div class="divider-text">or chat with us</div>
+          <a href="https://wa.me/254719281149?text=Hi%20UmbaLabs!%20I%20need%20a%20quote%20for%203D%20printing." class="btn btn-outline" style="width: 100%; justify-content: center;">
+            WhatsApp Us
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-strip">
+      <div class="container trust-grid">
+        <div class="trust-item">
+          <div class="trust-title">Instant Quote</div>
+          <div class="trust-subtitle">Get a final price in seconds</div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-title">Local & Fast</div>
+          <div class="trust-subtitle">Nairobi pickup or delivery</div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-title">Secure Files</div>
+          <div class="trust-subtitle">Confidential by default</div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-title">Simple Payments</div>
+          <div class="trust-subtitle">M-Pesa and bank transfer</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section" id="how-it-works">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Simple Process</span>
+          <h2 class="section-title">How It Works</h2>
+          <p class="section-subtitle">From your design to a finished product in three easy steps</p>
+        </div>
+        <div class="steps-grid">
+          <div class="step"><div class="step-number">1</div><h3>Upload Your File</h3><p>Drop your STL and get a final quote instantly.</p></div>
+          <div class="step"><div class="step-number">2</div><h3>Approve the Order</h3><p>Choose material, confirm details, and place the order.</p></div>
+          <div class="step"><div class="step-number">3</div><h3>Receive Your Print</h3><p>Pick up in Nairobi or get delivery. We share progress updates along the way.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Materials -->
+    <section class="section materials-section" id="materials">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Materials</span>
+          <h2 class="section-title">Choose Your Material</h2>
+          <p class="section-subtitle">Different materials for different needs. Not sure? We'll help you pick.</p>
+        </div>
+        <div class="materials-grid">
+          <div class="material-card">
+            <div class="material-image">🧱</div>
+            <div class="material-content">
+              <h3>PLA</h3>
+              <p>Most popular choice. Great for prototypes, models, and decorative items.</p>
+              <div class="material-props">
+                <div class="prop"><div class="prop-label">Strength</div><div class="prop-value">Medium</div></div>
+                <div class="prop"><div class="prop-label">Detail</div><div class="prop-value">High</div></div>
+                <div class="prop"><div class="prop-label">Heat Resist</div><div class="prop-value">Low (60°C)</div></div>
+                <div class="prop"><div class="prop-label">Flexibility</div><div class="prop-value">Rigid</div></div>
+              </div>
+              <div class="material-price">Starting from <span>KES 15/gram</span></div>
+            </div>
+          </div>
+          <div class="material-card">
+            <div class="material-image">⚙️</div>
+            <div class="material-content">
+              <h3>PETG</h3>
+              <p>Stronger and more durable. Ideal for functional parts and outdoor use.</p>
+              <div class="material-props">
+                <div class="prop"><div class="prop-label">Strength</div><div class="prop-value">High</div></div>
+                <div class="prop"><div class="prop-label">Detail</div><div class="prop-value">Good</div></div>
+                <div class="prop"><div class="prop-label">Heat Resist</div><div class="prop-value">Medium (80°C)</div></div>
+                <div class="prop"><div class="prop-label">Flexibility</div><div class="prop-value">Slight flex</div></div>
+              </div>
+              <div class="material-price">Starting from <span>KES 20/gram</span></div>
+            </div>
+          </div>
+          <div class="material-card">
+            <div class="material-image">🧲</div>
+            <div class="material-content">
+              <h3>TPU (Flexible)</h3>
+              <p>Flexible and impact resistant. Great for grips, gaskets, and protective parts.</p>
+              <div class="material-props">
+                <div class="prop"><div class="prop-label">Strength</div><div class="prop-value">High</div></div>
+                <div class="prop"><div class="prop-label">Detail</div><div class="prop-value">Medium</div></div>
+                <div class="prop"><div class="prop-label">Heat Resist</div><div class="prop-value">Medium</div></div>
+                <div class="prop"><div class="prop-label">Flexibility</div><div class="prop-value">Flexible</div></div>
+              </div>
+              <div class="material-price">Starting from <span>KES 25/gram</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Services</span>
+          <h2 class="section-title">What We Can Do For You</h2>
+          <p class="section-subtitle">From a single prototype to small batch production</p>
+        </div>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">🎨</div>
+            <h3>Custom Prints</h3>
+            <p>Turn your 3D files into physical objects. We handle the technical details.</p>
+            <ul class="service-features"><li>Any STL/OBJ/STEP file</li><li>Multiple colors available</li><li>Various sizes supported</li><li>Quality inspection included</li></ul>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">🔧</div>
+            <h3>Prototyping</h3>
+            <p>Test your product ideas quickly before investing in expensive tooling.</p>
+            <ul class="service-features"><li>Rapid iteration</li><li>Functional testing parts</li><li>Fit and assembly checks</li><li>Design feedback included</li></ul>
+          </div>
+          <div class="service-card" style="border: 2px solid var(--orange); background: rgba(255,107,53,0.03);">
+            <div class="service-icon">✏️</div>
+            <h3>Design Services</h3>
+            <p>Don't have a 3D file? We can create one from your sketch or idea.</p>
+            <ul class="service-features"><li>Sketch to 3D model</li><li>Photo reference modeling</li><li>File repair & optimization</li><li>Design consultation</li></ul>
+            <a href="#design" class="btn btn-primary" style="margin-top: 16px; width: 100%; justify-content: center;">View Design Pricing</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Add-ons & Bundles -->
+    <section class="section" id="addons">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Upgrades</span>
+          <h2 class="section-title">Add-ons & Bundles</h2>
+          <p class="section-subtitle">Increase quality, speed, or value with popular add-ons</p>
+        </div>
+        <div class="addons-grid">
+          <div class="addons-card">
+            <h3>Finish & Quality</h3>
+            <p>Make your part look production-ready.</p>
+            <ul>
+              <li>Sanding & smoothing</li>
+              <li>Primer + paint</li>
+              <li>Precision checks</li>
+              <li>Color matching</li>
+            </ul>
+          </div>
+          <div class="addons-card">
+            <h3>Speed & Delivery</h3>
+            <p>Hit deadlines without the stress.</p>
+            <ul>
+              <li>Express turnaround</li>
+              <li>Same-day pickup slots</li>
+              <li>Rider delivery within Nairobi</li>
+              <li>Progress photo updates</li>
+            </ul>
+          </div>
+          <div class="addons-card">
+            <h3>Bundles & Batch</h3>
+            <p>Better value when you need multiples.</p>
+            <ul>
+              <li>Prototype Pack (3 revisions)</li>
+              <li>Architect Pack (3 models)</li>
+              <li>Batch discount for 5+ parts</li>
+              <li>Monthly production runs</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Design Services -->
+    <section class="section" id="design" style="background: linear-gradient(135deg, var(--navy) 0%, #2d2d4a 100%); color: var(--white);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label" style="background: rgba(255,255,255,0.1); color: var(--gold);">High-Value Service</span>
+          <h2 class="section-title" style="color: var(--white);">3D Design Services</h2>
+          <p class="section-subtitle" style="color: rgba(255,255,255,0.7);">No 3D file? No problem. We'll create one from your idea, sketch, or photo.</p>
+        </div>
+
+        <div class="design-grid">
+          <div class="design-card">
+            <div class="design-icon">✏️</div>
+            <h3>Sketch to 3D</h3>
+            <p>Send us a hand-drawn sketch or rough drawing. We'll turn it into a printable 3D model.</p>
+            <div class="design-price">From <span>KES 1,500</span></div>
+            <div class="design-time">24-48 hours</div>
+          </div>
+          <div class="design-card featured">
+            <div class="design-badge">Most Popular</div>
+            <div class="design-icon">📸</div>
+            <h3>Photo to 3D</h3>
+            <p>Have a broken part or product you want to replicate? Send photos from multiple angles.</p>
+            <div class="design-price">From <span>KES 2,500</span></div>
+            <div class="design-time">48-72 hours</div>
+          </div>
+          <div class="design-card">
+            <div class="design-icon">🔧</div>
+            <h3>Custom Product Design</h3>
+            <p>Full product design from concept to print-ready file. Includes revisions.</p>
+            <div class="design-price">From <span>KES 5,000</span></div>
+            <div class="design-time">3-5 days</div>
+          </div>
+          <div class="design-card">
+            <div class="design-icon">🩹</div>
+            <h3>File Repair</h3>
+            <p>Have a broken STL that won't print? We'll fix mesh errors and optimize for printing.</p>
+            <div class="design-price">From <span>KES 500</span></div>
+            <div class="design-time">Same day</div>
+          </div>
+        </div>
+
+        <!-- 3D Scanning Coming Soon -->
+        <div class="scanning-banner">
+          <div class="scanning-content">
+            <div class="scanning-badge">Coming Soon</div>
+            <div class="scanning-icon">📡</div>
+            <div class="scanning-text">
+              <h3>3D Scanning Service</h3>
+              <p>Digitize physical objects into 3D models. Perfect for replication, modification, or archiving.</p>
+            </div>
+            <a href="https://wa.me/254719281149?text=Hi%20UmbaLabs!%20I'm%20interested%20in%203D%20scanning.%20Please%20notify%20me%20when%20it's%20available." class="btn btn-outline" style="border-color: rgba(255,255,255,0.3); color: white;">
+              Notify Me
+            </a>
+          </div>
+        </div>
+
+        <div class="design-cta">
+          <p>Describe your idea and we'll give you a free quote</p>
+          <a href="https://wa.me/254719281149?text=Hi%20UmbaLabs!%20I%20need%20help%20designing%20a%203D%20model.%20Here's%20my%20idea:%20" class="btn btn-primary btn-large">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Get Design Quote on WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="section pricing-section" id="pricing">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Transparent Pricing</span>
+          <h2 class="section-title">Pricing Guide</h2>
+          <p class="section-subtitle">Simple pricing based on size and material. No hidden fees.</p>
+        </div>
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <div class="pricing-size">Small Items</div>
+            <h3>Keychains & Tags</h3>
+            <div class="pricing-amount">KES 500+</div>
+            <div class="pricing-unit">Starting price</div>
+            <ul class="pricing-examples"><li>Keychains & nameplates</li><li>Small figurines</li><li>Phone accessories</li><li>Cable organizers</li></ul>
+          </div>
+          <div class="pricing-card featured">
+            <div class="pricing-size">Medium Items</div>
+            <h3>Most Popular</h3>
+            <div class="pricing-amount">KES 1,500+</div>
+            <div class="pricing-unit">Starting price</div>
+            <ul class="pricing-examples"><li>Phone stands</li><li>Desk organizers</li><li>Replacement parts</li><li>Small prototypes</li></ul>
+          </div>
+          <div class="pricing-card">
+            <div class="pricing-size">Large Items</div>
+            <h3>Custom Quote</h3>
+            <div class="pricing-amount">KES 3,000+</div>
+            <div class="pricing-unit">Depends on complexity</div>
+            <ul class="pricing-examples"><li>Architectural models</li><li>Large prototypes</li><li>Multi-part assemblies</li><li>Batch production</li></ul>
+          </div>
+        </div>
+        <p class="pricing-note">Final price depends on size, material, complexity, and finish. Upload your STL for an instant final quote.</p>
+      </div>
+    </section>
+
+    <!-- Project Highlights -->
+    <section class="section" id="gallery">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Project Highlights</span>
+          <h2 class="section-title">Recent Prints</h2>
+          <p class="section-subtitle">Examples of what customers order most often</p>
+        </div>
+        <div class="project-grid">
+          <div class="project-card">
+            <div class="project-icon">🏢</div>
+            <h3>Architectural Models</h3>
+            <p>Scale models for client presentations and planning reviews.</p>
+            <div class="project-meta">PLA / PETG • 2-5 days</div>
+          </div>
+          <div class="project-card">
+            <div class="project-icon">🔩</div>
+            <h3>Replacement Parts</h3>
+            <p>Functional parts for equipment, fixtures, and repairs.</p>
+            <div class="project-meta">PETG • 2-3 days</div>
+          </div>
+          <div class="project-card">
+            <div class="project-icon">🧩</div>
+            <h3>Product Prototypes</h3>
+            <p>Iterate quickly with test prints before mass production.</p>
+            <div class="project-meta">PLA • 2-3 days</div>
+          </div>
+        </div>
+        <div class="gallery-cta">
+          <p style="color: var(--gray-500); margin-bottom: 12px;">Explore: <a class="text-link" href="/architectural-models.html">Architectural models</a> · <a class="text-link" href="/prototype-printing.html">Prototype printing</a> · <a class="text-link" href="/tpu-printing.html">TPU printing</a></p>
+          <p style="color: var(--gray-500); margin-bottom: 16px;">Want your print featured? Tag us on Instagram</p>
+          <a href="https://instagram.com/umbalabs3d" class="btn btn-outline" target="_blank" rel="noopener">@umbalabs3d</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Us -->
+    <section class="section" style="background: var(--gray-50);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Why UmbaLabs</span>
+          <h2 class="section-title">Why Choose Us</h2>
+        </div>
+        <div class="why-grid">
+          <div class="why-card"><div class="why-icon">⚡</div><h3>Faster Than Importing</h3><p>Get your prints in days, not weeks. No customs, no shipping delays.</p></div>
+          <div class="why-card"><div class="why-icon">💬</div><h3>WhatsApp Support</h3><p>Quick responses, progress updates, and easy communication in English or Swahili.</p></div>
+          <div class="why-card"><div class="why-icon">💳</div><h3>M-Pesa Accepted</h3><p>Pay easily with M-Pesa. No need for credit cards or international transfers.</p></div>
+          <div class="why-card"><div class="why-icon">🎯</div><h3>No Minimums</h3><p>Order just one piece or a hundred. We handle orders of any size.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq-section" id="faq">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">FAQ</span>
+          <h2 class="section-title">Common Questions</h2>
+        </div>
+        <div class="faq-grid">
+          <details class="faq-item"><summary>What file formats do you accept?</summary><p>Instant final quotes are available for STL files. Convert other formats (OBJ, STEP, 3MF) to STL before uploading.</p></details>
+          <details class="faq-item"><summary>How long does printing take?</summary><p>Most orders are ready in 2-3 days. Larger or more complex prints may take longer. We'll give you an accurate timeline when we quote your project.</p></details>
+          <details class="faq-item"><summary>I don't have a 3D file. Can you help?</summary><p>Yes! Send us a sketch, photo, or description of what you need. We offer design services to create 3D models from your ideas.</p></details>
+          <details class="faq-item"><summary>How do I pay?</summary><p>We accept M-Pesa (preferred), bank transfer, and cash on pickup. Payment is required before we start printing.</p></details>
+          <details class="faq-item"><summary>Do you deliver?</summary><p>Yes, we deliver within Nairobi. Pickup is also available. Delivery fees depend on your location.</p></details>
+          <details class="faq-item"><summary>What if I'm not happy with the print?</summary><p>We do quality checks on every print. If there's a defect on our end, we'll reprint it for free. We also send photos before delivery so you can approve the result.</p></details>
+          <details class="faq-item"><summary>Is my design confidential?</summary><p>Yes. We treat all customer files as confidential. We won't share, sell, or reuse your designs without permission.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="container">
+        <h2>Ready to Print Your Idea?</h2>
+        <p>Upload your STL for an instant final quote and place your order in seconds.</p>
+        <div class="cta-buttons">
+          <a href="#instant-quote" class="btn btn-primary btn-large">Get Instant Quote</a>
+          <a href="https://wa.me/254719281149?text=Hi%20UmbaLabs!%20I%27d%20like%20a%20quote%20for%203D%20printing." class="btn btn-outline btn-large">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Chat on WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo" style="color: var(--white);"><img src="umbalabs3d_logo.svg" alt="UmbaLabs 3D" style="width: 48px; height: 48px;"> UmbaLabs 3D</a>
+          <p>Professional 3D printing service in Nairobi, Kenya. We turn your digital designs into physical reality.<br><br>"Umba" means "create" in Swahili.</p>
+        </div>
+        <div><h4 class="footer-title">Quick Links</h4><ul class="footer-links"><li><a href="#how-it-works">How It Works</a></li><li><a href="#materials">Materials</a></li><li><a href="#services">Services</a></li><li><a href="#addons">Add-ons</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+        <div><h4 class="footer-title">Contact</h4><ul class="footer-links"><li><a href="https://wa.me/254719281149">WhatsApp</a></li><li><a href="mailto:hello@umbalabs3d.com">hello@umbalabs3d.com</a></li><li>Nairobi, Kenya</li></ul></div>
+        <div><h4 class="footer-title">Follow Us</h4><ul class="footer-links"><li><a href="https://instagram.com/umbalabs3d" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://tiktok.com/@umbalabs3d" target="_blank" rel="noopener">TikTok</a></li><li><a href="https://twitter.com/umbalabs3d" target="_blank" rel="noopener">Twitter</a></li></ul></div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 UmbaLabs 3D. All rights reserved.</div>
+        <div class="payment-methods"><span>We accept:</span><span class="payment-badge" style="background: #4CAF50; color: white;">M-Pesa</span><span class="payment-badge">Bank Transfer</span></div>
+      </div>
+    </div>
+  </footer>
+
+  <a class="float-whatsapp" href="https://wa.me/254719281149?text=Hi%20UmbaLabs!%20I%27d%20like%20a%20quote%20for%203D%20printing." aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+  const sessionId = (() => {
+    const existing = sessionStorage.getItem('session_id');
+    if (existing) return existing;
+    const id = Math.random().toString(36).slice(2) + Date.now().toString(36);
+    sessionStorage.setItem('session_id', id);
+    return id;
+  })();
+
+  function captureUtmParams() {
+    const params = new URLSearchParams(window.location.search);
+    const utm = {};
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(key => {
+      const val = params.get(key);
+      if (val) utm[key] = val;
+    });
+    if (Object.keys(utm).length) {
+      utm.ts = Date.now();
+      localStorage.setItem('utm_params', JSON.stringify(utm));
+      return utm;
+    }
+    try {
+      const stored = JSON.parse(localStorage.getItem('utm_params') || '{}');
+      return stored;
+    } catch (e) {
+      return {};
+    }
+  }
+
+  const utmParams = captureUtmParams();
+
+  function trackEvent(event, metadata = {}) {
+    const payload = {
+      event: event,
+      page: window.location.pathname,
+      session_id: sessionId,
+      metadata: { ...utmParams, ...metadata, referrer: document.referrer }
+    };
+    fetch('/api/track', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).catch(() => {});
+  }
+
+  (function() {
+    // Elements
+    const fileInput = document.getElementById('file');
+    const fileLabel = document.getElementById('fileLabel');
+    const dropzone = document.getElementById('dropzone');
+    const uploadIcon = document.getElementById('uploadIcon');
+    const step1 = document.getElementById('step1');
+    const step2 = document.getElementById('step2');
+    const orderForm = document.getElementById('orderForm');
+    const uploadStatus = document.getElementById('uploadStatus');
+    const orderStatus = document.getElementById('orderStatus');
+    const submitBtn = document.getElementById('submitBtn');
+    const btnText = document.getElementById('btnText');
+    const btnPrice = document.getElementById('btnPrice');
+    const unitConfirm = document.getElementById('unitConfirm');
+    const unitHint = document.getElementById('unitHint');
+    const quoteEstimate = document.getElementById('quoteEstimate');
+    const quoteSteps = document.getElementById('quoteSteps');
+    const unitButtons = unitConfirm ? unitConfirm.querySelectorAll('.unit-btn') : [];
+
+    // State
+    let currentFile = null;
+    let quoteData = null;
+    let selectedMaterial = null;
+    let currentUnits = 'mm';
+
+    function setQuoteStep(step) {
+      if (!quoteSteps) return;
+      quoteSteps.querySelectorAll('.quote-step').forEach(el => {
+        el.classList.toggle('active', el.dataset.step === step);
+      });
+    }
+
+    // Drag and drop
+    ['dragenter', 'dragover'].forEach(e => {
+      dropzone.addEventListener(e, ev => { ev.preventDefault(); dropzone.classList.add('dragover'); });
+    });
+    ['dragleave', 'drop'].forEach(e => {
+      dropzone.addEventListener(e, ev => { ev.preventDefault(); dropzone.classList.remove('dragover'); });
+    });
+    dropzone.addEventListener('drop', e => {
+      if (e.dataTransfer.files.length) {
+        fileInput.files = e.dataTransfer.files;
+        handleFileSelect(e.dataTransfer.files[0]);
+      }
+    });
+
+    fileInput.addEventListener('change', () => {
+      if (fileInput.files.length) handleFileSelect(fileInput.files[0]);
+    });
+
+    unitButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const unit = btn.dataset.unit;
+        if (!unit || unit === currentUnits || !currentFile) {
+          setUnitButtons(unit || currentUnits);
+          return;
+        }
+        setUnitButtons(unit);
+        currentUnits = unit;
+        trackEvent('unit_confirmed', { unit });
+        runQuote(currentFile, currentUnits);
+      });
+    });
+
+    document.getElementById('changeFile').addEventListener('click', resetToStep1);
+
+    async function handleFileSelect(file) {
+      currentFile = file;
+      fileLabel.textContent = file.name;
+      const ext = file.name.split('.').pop().toLowerCase();
+      const maxSize = 100 * 1024 * 1024;
+
+      if (file.size > maxSize) {
+        showStatus(uploadStatus, 'File too large. Maximum 100MB.', 'error');
+        return;
+      }
+
+      setQuoteStep('upload');
+      trackEvent('upload_started', {
+        file_type: ext ? ext.toUpperCase() : 'UNKNOWN',
+        file_size: file.size
+      });
+
+      currentUnits = 'mm';
+      setUnitButtons(currentUnits);
+
+      // Only STL files get instant quotes
+      if (ext === 'stl') {
+        showStatus(uploadStatus, 'Analyzing STL...', 'loading');
+        runQuote(file, currentUnits);
+      } else {
+        showStatus(uploadStatus, 'Only STL files are supported for instant final quotes.', 'error');
+      }
+    }
+
+    async function runQuote(file, units) {
+      fileLabel.textContent = 'Analyzing file...';
+      dropzone.classList.add('analyzing');
+      uploadIcon.innerHTML = '<div style="width:24px;height:24px;border:3px solid var(--gray-300);border-top-color:var(--orange);border-radius:50%;animation:spin 1s linear infinite"></div>';
+
+      try {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('units', units);
+        const res = await fetch('/api/quote', { method: 'POST', body: formData });
+        const data = await res.json();
+
+        if (data.success && data.supported && data.analysis) {
+          quoteData = {
+            volume_cm3: data.analysis.volume_cm3,
+            dimensions: data.analysis.dimensions,
+            dimensions_mm: data.analysis.dimensions_mm,
+            display_unit: data.analysis.display_unit,
+            unit_warning: data.analysis.unit_warning,
+            surface_area_cm2: data.analysis.surface_area_mm2 / 100,
+            triangle_count: data.analysis.triangle_count,
+            prices: {
+              PLA: data.prices.PLA.price,
+              PETG: data.prices.PETG.price,
+              TPU: data.prices.TPU.price
+            },
+            estimates: {
+              PLA: data.prices.PLA.estimate,
+              PETG: data.prices.PETG.estimate,
+              TPU: data.prices.TPU.estimate
+            },
+            printability: data.printability,
+            limitations: data.limitations || {}
+          };
+          if (uploadStatus) uploadStatus.style.display = 'none';
+          showQuoteResults(file, quoteData);
+        } else {
+          showStatus(uploadStatus, data.error || 'Could not analyze file. Please check your STL.', 'error');
+        }
+      } catch (err) {
+        console.error('Quote error:', err);
+        showStatus(uploadStatus, 'Server error. Please try again.', 'error');
+      }
+    }
+
+    function showQuoteResults(file, quote) {
+      step1.style.display = 'none';
+      step2.style.display = 'block';
+      setQuoteStep('estimate');
+      trackEvent('quote_generated', {
+        file_type: file.name.split('.').pop()?.toUpperCase() || 'UNKNOWN',
+        volume_cm3: quote.volume_cm3,
+        triangle_count: quote.triangle_count
+      });
+
+      document.getElementById('quoteFileName').textContent = file.name;
+      const unitLabel = quote.display_unit || 'mm';
+      const precision = unitLabel === 'in' ? 2 : 1;
+      document.getElementById('quoteDimensions').innerHTML = `📐 ${quote.dimensions.x.toFixed(precision)} × ${quote.dimensions.y.toFixed(precision)} × ${quote.dimensions.z.toFixed(precision)} ${unitLabel}`;
+      document.getElementById('quoteVolume').innerHTML = `📦 ${quote.volume_cm3.toFixed(1)} cm³`;
+
+      if (unitConfirm) {
+        unitConfirm.style.display = 'block';
+        unitHint.textContent = quote.unit_warning || 'Choose the unit your model was designed in.';
+        setUnitButtons(unitLabel);
+        currentUnits = unitLabel;
+      }
+
+      // Printability
+      const printDiv = document.getElementById('quotePrintability');
+      let canPrint = true;
+      if (quote.printability && quote.printability.printable === false && quote.printability.issues && quote.printability.issues.length) {
+        printDiv.innerHTML = '<div class="printability-error">✖ ' + quote.printability.issues.join(', ') + '</div>';
+        canPrint = false;
+      } else if (quote.printability.warnings && quote.printability.warnings.length) {
+        printDiv.innerHTML = '<div class="printability-warning">⚠️ ' + quote.printability.warnings.join(', ') + '</div>';
+      } else {
+        printDiv.innerHTML = '<div class="printability-ok">✓ Printable</div>';
+      }
+      submitBtn.disabled = !canPrint;
+      btnText.textContent = canPrint ? 'Place Order' : 'Not Printable';
+
+      updateLimitations('PLA');
+
+      // Material options
+      const materialsDiv = document.getElementById('quoteMaterials');
+      materialsDiv.innerHTML = '';
+
+      const materials = [
+        { id: 'PLA', name: 'PLA', desc: 'Standard, great for prototypes', price: quote.prices.PLA, time: '2-3 days' },
+        { id: 'PETG', name: 'PETG', desc: 'Stronger, heat resistant', price: quote.prices.PETG, time: '2-3 days' },
+        { id: 'TPU', name: 'TPU', desc: 'Flexible, impact resistant', price: quote.prices.TPU, time: '3-4 days' }
+      ];
+
+      materials.forEach((m, i) => {
+        const opt = document.createElement('label');
+        opt.className = 'material-option' + (i === 0 ? ' selected' : '');
+        opt.innerHTML = `
+          <input type="radio" name="material" value="${m.id}" ${i === 0 ? 'checked' : ''}>
+          <div class="material-info">
+            <div class="material-name">${m.name}</div>
+            <div class="material-desc">${m.desc}</div>
+          </div>
+          <div style="text-align:right">
+            <div class="material-price">KES ${m.price.toLocaleString()}</div>
+            <div class="material-time">${m.time}</div>
+          </div>
+        `;
+        opt.addEventListener('click', () => selectMaterial(m.id, m.price, opt));
+        materialsDiv.appendChild(opt);
+      });
+
+      selectMaterial('PLA', quote.prices.PLA, materialsDiv.querySelector('.material-option'));
+    }
+
+    function selectMaterial(id, price, element) {
+      const estimate = quoteData && quoteData.estimates ? quoteData.estimates[id] : null;
+      selectedMaterial = { id, price, estimate };
+      document.querySelectorAll('.material-option').forEach(el => el.classList.remove('selected'));
+      element.classList.add('selected');
+      btnPrice.textContent = 'KES ' + price.toLocaleString();
+      updateEstimate();
+      updateLimitations(id);
+      trackEvent('material_selected', { material: id, price });
+    }
+
+    function updateEstimate() {
+      if (!quoteEstimate) return;
+      if (!selectedMaterial || !selectedMaterial.estimate) {
+        quoteEstimate.textContent = 'Select a material to see usage and time.';
+        return;
+      }
+      const est = selectedMaterial.estimate;
+      quoteEstimate.textContent = `Material usage: ~${est.grams} g • Print time: ~${est.hours} hrs`;
+    }
+
+    function updateLimitations(materialId) {
+      const limitsDiv = document.getElementById('quoteLimitations');
+      if (!limitsDiv) return;
+      const limits = quoteData && quoteData.limitations ? quoteData.limitations[materialId] : null;
+      if (!limits || !limits.limits) {
+        limitsDiv.style.display = 'none';
+        return;
+      }
+      limitsDiv.style.display = 'block';
+      limitsDiv.innerHTML = `<strong>Print limitations</strong><ul>${limits.limits.map(item => `<li>${item}</li>`).join('')}</ul>`;
+    }
+
+    function setUnitButtons(unit) {
+      unitButtons.forEach(btn => {
+        btn.classList.toggle('selected', btn.dataset.unit === unit);
+      });
+    }
+
+    function resetToStep1() {
+      step1.style.display = 'block';
+      step2.style.display = 'none';
+      fileLabel.textContent = 'Drop your 3D file or click to browse';
+      dropzone.classList.remove('analyzing');
+      uploadIcon.innerHTML = '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>';
+      currentFile = null;
+      quoteData = null;
+      selectedMaterial = null;
+      currentUnits = 'mm';
+      if (unitConfirm) unitConfirm.style.display = 'none';
+      if (quoteEstimate) quoteEstimate.textContent = '';
+      fileInput.value = '';
+      if (uploadStatus) uploadStatus.style.display = 'none';
+      const limitsDiv = document.getElementById('quoteLimitations');
+      if (limitsDiv) limitsDiv.style.display = 'none';
+      submitBtn.disabled = false;
+      btnText.textContent = 'Place Order';
+      setQuoteStep('upload');
+    }
+
+    // Order form submit (instant quote path)
+    orderForm.addEventListener('submit', async e => {
+      e.preventDefault();
+      if (!currentFile || !selectedMaterial) return;
+
+      submitBtn.disabled = true;
+      btnText.textContent = 'Submitting...';
+
+      const formData = new FormData();
+      formData.append('file', currentFile);
+      formData.append('name', document.getElementById('name').value);
+      formData.append('phone', document.getElementById('phone').value);
+      formData.append('material', selectedMaterial.id);
+      formData.append('quote_amount', selectedMaterial.price);
+      Object.entries(utmParams || {}).forEach(([key, value]) => {
+        if (key.startsWith('utm_')) formData.append(key, value);
+      });
+      if (quoteData) {
+        formData.append('volume_cm3', quoteData.volume_cm3);
+        if (quoteData.dimensions_mm) {
+          const d = quoteData.dimensions_mm;
+          formData.append('dimensions', `${d.x.toFixed(1)}x${d.y.toFixed(1)}x${d.z.toFixed(1)} mm`);
+        }
+        formData.append('units', currentUnits);
+        if (selectedMaterial.estimate) {
+          formData.append('estimated_grams', selectedMaterial.estimate.grams);
+          formData.append('estimated_hours', selectedMaterial.estimate.hours);
+        }
+      }
+
+      try {
+        trackEvent('order_submitted', {
+          material: selectedMaterial.id,
+          quote_amount: selectedMaterial.price,
+          volume_cm3: quoteData ? quoteData.volume_cm3 : null
+        });
+        const res = await fetch('/api/upload', { method: 'POST', body: formData });
+        const data = await res.json();
+
+        if (data.success) {
+          showStatus(orderStatus, 'Order received! We\'ll confirm on WhatsApp and start printing.', 'success');
+          setQuoteStep('final');
+          setTimeout(() => { resetToStep1(); orderForm.reset(); }, 4000);
+        } else {
+          showStatus(orderStatus, data.error || 'Submission failed', 'error');
+        }
+      } catch (err) {
+        showStatus(orderStatus, 'Error. Please try WhatsApp instead.', 'error');
+      }
+
+      submitBtn.disabled = false;
+      btnText.textContent = 'Place Order';
+    });
+
+    function showStatus(el, message, type) {
+      if (!el) return;
+      el.textContent = message;
+      el.className = type;
+    }
+
+    setQuoteStep('upload');
+  })();
+
+  // Spinner animation
+  const style = document.createElement('style');
+  style.textContent = '@keyframes spin { to { transform: rotate(360deg); } }';
+  document.head.appendChild(style);
+
+  // Analytics tracking
+  (function() {
+    // Track page view on load
+    trackEvent('pageview');
+
+    // Track scroll depth
+    let maxScroll = 0;
+    window.addEventListener('scroll', () => {
+      const scrollPct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+      if (scrollPct > maxScroll && scrollPct % 25 === 0) {
+        maxScroll = scrollPct;
+        trackEvent('scroll', { depth: scrollPct });
+      }
+    });
+
+    // Track CTA clicks
+    document.querySelectorAll('.btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        trackEvent('cta_click', { button: btn.textContent.trim().substring(0, 30) });
+      });
+    });
+    document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+      link.addEventListener('click', () => {
+        trackEvent('whatsapp_click', { location: link.closest('section')?.id || 'global' });
+      });
+    });
+
+    // Track section views
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          trackEvent('section_view', { section: entry.target.id });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('section[id]').forEach(section => observer.observe(section));
+  })();
+  </script>
+</body>
+</html>

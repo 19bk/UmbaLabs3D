@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 544 544" width="544" height="544">
+  <!-- Shadow -->
+  <rect x="20" y="24" width="512" height="512" rx="115" fill="rgba(0,0,0,0.1)"/>
+  
+  <!-- White Rounded Square Background -->
+  <rect x="8" y="8" width="512" height="512" rx="115" fill="#FFFFFF"/>
+  
+  <!-- Stacked Layers Icon -->
+  <g transform="translate(136, 128)">
+    <!-- Layer 4 (top) - Dark -->
+    <rect x="70" y="0" width="115" height="40" rx="12" fill="#1A1A2E"/>
+    <!-- Layer 3 - Teal -->
+    <rect x="45" y="55" width="165" height="45" rx="12" fill="#00D9C0"/>
+    <!-- Layer 2 - Gold -->
+    <rect x="20" y="115" width="215" height="45" rx="12" fill="#F7B801"/>
+    <!-- Layer 1 (bottom) - Orange -->
+    <rect x="0" y="175" width="255" height="50" rx="12" fill="#FF6B35"/>
+  </g>
+</svg>

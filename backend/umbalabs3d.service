@@ -1,0 +1,26 @@
+[Unit]
+Description=UmbaLabs 3D File Upload API
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/umbalabs3d
+ExecStart=/usr/bin/python3 /root/umbalabs3d/app.py
+
+# Environment variables for Telegram notifications
+# Replace with your actual Telegram bot token and chat ID
+Environment="TELEGRAM_BOT_TOKEN=YOUR_BOT_TOKEN_HERE"
+Environment="TELEGRAM_CHAT_ID=YOUR_CHAT_ID_HERE"
+Environment="UPLOAD_FOLDER=/var/uploads"
+
+# Restart configuration
+Restart=always
+RestartSec=10
+
+# Logging
+StandardOutput=append:/var/log/umbalabs3d/api.log
+StandardError=append:/var/log/umbalabs3d/api.log
+
+[Install]
+WantedBy=multi-user.target

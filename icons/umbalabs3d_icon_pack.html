@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UmbaLabs 3D - Icon Pack (Logo 1: Stacked Layers)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --orange: #FF6B35;
+            --dark: #1A1A2E;
+            --gold: #F7B801;
+            --teal: #00D9C0;
+            --white: #FFFFFF;
+            --light: #F8F9FA;
+            --gray: #6B7280;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--light);
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 2.2rem;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--gray);
+            margin-bottom: 40px;
+        }
+
+        .section {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .section-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.3rem;
+            color: var(--dark);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--orange);
+            display: inline-block;
+        }
+
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 25px;
+        }
+
+        .icon-card {
+            text-align: center;
+        }
+
+        .icon-preview {
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+            padding: 20px;
+            min-height: 140px;
+        }
+
+        .icon-preview.light { background: var(--light); border: 1px solid #e5e5e5; }
+        .icon-preview.dark { background: var(--dark); }
+        .icon-preview.orange { background: var(--orange); }
+        .icon-preview.gradient { background: linear-gradient(135deg, var(--orange), var(--gold)); }
+        .icon-preview.teal { background: var(--teal); }
+        .icon-preview.checkerboard {
+            background-image: 
+                linear-gradient(45deg, #ccc 25%, transparent 25%), 
+                linear-gradient(-45deg, #ccc 25%, transparent 25%), 
+                linear-gradient(45deg, transparent 75%, #ccc 75%), 
+                linear-gradient(-45deg, transparent 75%, #ccc 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+        }
+
+        .icon-name {
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+
+        .icon-size {
+            color: var(--gray);
+            font-size: 0.8rem;
+        }
+
+        .icon-use {
+            color: var(--orange);
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        /* Icon Styles */
+        .layers-icon {
+            position: relative;
+        }
+
+        .layers-icon .layer {
+            position: absolute;
+            border-radius: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Size variations */
+        .icon-512 { width: 100px; height: 100px; }
+        .icon-512 .layer { height: 16%; }
+        .icon-512 .l1 { bottom: 0; width: 100%; background: var(--orange); }
+        .icon-512 .l2 { bottom: 22%; width: 85%; background: var(--gold); }
+        .icon-512 .l3 { bottom: 44%; width: 70%; background: var(--teal); }
+        .icon-512 .l4 { bottom: 66%; width: 55%; background: var(--dark); }
+
+        .icon-256 { width: 80px; height: 80px; }
+        .icon-256 .layer { height: 16%; }
+        .icon-256 .l1 { bottom: 0; width: 100%; background: var(--orange); }
+        .icon-256 .l2 { bottom: 22%; width: 85%; background: var(--gold); }
+        .icon-256 .l3 { bottom: 44%; width: 70%; background: var(--teal); }
+        .icon-256 .l4 { bottom: 66%; width: 55%; background: var(--dark); }
+
+        .icon-128 { width: 60px; height: 60px; }
+        .icon-128 .layer { height: 16%; }
+        .icon-128 .l1 { bottom: 0; width: 100%; background: var(--orange); }
+        .icon-128 .l2 { bottom: 22%; width: 85%; background: var(--gold); }
+        .icon-128 .l3 { bottom: 44%; width: 70%; background: var(--teal); }
+        .icon-128 .l4 { bottom: 66%; width: 55%; background: var(--dark); }
+
+        .icon-64 { width: 40px; height: 40px; }
+        .icon-64 .layer { height: 18%; border-radius: 2px; }
+        .icon-64 .l1 { bottom: 0; width: 100%; background: var(--orange); }
+        .icon-64 .l2 { bottom: 24%; width: 85%; background: var(--gold); }
+        .icon-64 .l3 { bottom: 48%; width: 70%; background: var(--teal); }
+        .icon-64 .l4 { bottom: 72%; width: 55%; background: var(--dark); }
+
+        .icon-32 { width: 28px; height: 28px; }
+        .icon-32 .layer { height: 20%; border-radius: 2px; }
+        .icon-32 .l1 { bottom: 0; width: 100%; background: var(--orange); }
+        .icon-32 .l2 { bottom: 26%; width: 80%; background: var(--gold); }
+        .icon-32 .l3 { bottom: 52%; width: 60%; background: var(--teal); }
+        .icon-32 .l4 { bottom: 78%; width: 45%; background: var(--dark); }
+
+        /* White layers for dark backgrounds */
+        .white-top .l4 { background: var(--white) !important; }
+
+        /* Circular icons */
+        .circle-icon {
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .circle-icon.size-lg { width: 100px; height: 100px; }
+        .circle-icon.size-md { width: 80px; height: 80px; }
+        .circle-icon.size-sm { width: 60px; height: 60px; }
+
+        .circle-icon .layers-icon {
+            transform: scale(0.65);
+        }
+
+        .circle-icon.bg-dark { background: var(--dark); }
+        .circle-icon.bg-orange { background: var(--orange); }
+        .circle-icon.bg-white { background: var(--white); border: 3px solid var(--orange); }
+        .circle-icon.bg-gradient { background: linear-gradient(135deg, var(--dark), #2d2d4a); }
+
+        /* Rounded square icons */
+        .rounded-icon {
+            border-radius: 22%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .rounded-icon.size-lg { width: 100px; height: 100px; }
+        .rounded-icon.size-md { width: 80px; height: 80px; }
+        .rounded-icon.size-sm { width: 60px; height: 60px; }
+
+        .rounded-icon .layers-icon {
+            transform: scale(0.6);
+        }
+
+        .rounded-icon.bg-dark { background: var(--dark); }
+        .rounded-icon.bg-orange { background: var(--orange); }
+        .rounded-icon.bg-white { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .rounded-icon.bg-gradient { background: linear-gradient(135deg, var(--orange), var(--gold)); }
+        .rounded-icon.bg-teal { background: var(--teal); }
+
+        /* Full logo with text */
+        .full-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .full-logo .layers-icon {
+            width: 55px;
+            height: 55px;
+        }
+
+        .full-logo .layers-icon .layer {
+            height: 16%;
+        }
+
+        .full-logo .layers-icon .l1 { bottom: 0; width: 100%; background: var(--orange); }
+        .full-logo .layers-icon .l2 { bottom: 22%; width: 85%; background: var(--gold); }
+        .full-logo .layers-icon .l3 { bottom: 44%; width: 70%; background: var(--teal); }
+        .full-logo .layers-icon .l4 { bottom: 66%; width: 55%; background: var(--dark); }
+
+        .full-logo .text .main {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.8rem;
+            line-height: 1;
+            color: var(--dark);
+        }
+
+        .full-logo .text .sub {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: var(--orange);
+        }
+
+        .full-logo.white-text .text .main { color: var(--white); }
+        .full-logo.white-text .layers-icon .l4 { background: var(--white); }
+
+        /* Stacked logo */
+        .stacked-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .stacked-logo .layers-icon {
+            width: 60px;
+            height: 60px;
+        }
+
+        .stacked-logo .layers-icon .layer { height: 16%; }
+        .stacked-logo .layers-icon .l1 { bottom: 0; width: 100%; background: var(--orange); }
+        .stacked-logo .layers-icon .l2 { bottom: 22%; width: 85%; background: var(--gold); }
+        .stacked-logo .layers-icon .l3 { bottom: 44%; width: 70%; background: var(--teal); }
+        .stacked-logo .layers-icon .l4 { bottom: 66%; width: 55%; background: var(--dark); }
+
+        .stacked-logo .text {
+            text-align: center;
+        }
+
+        .stacked-logo .text .main {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.1rem;
+            color: var(--dark);
+        }
+
+        .stacked-logo .text .sub {
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: var(--orange);
+        }
+
+        .stacked-logo.white-text .text .main { color: var(--white); }
+        .stacked-logo.white-text .layers-icon .l4 { background: var(--white); }
+
+        /* Social media specific */
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+        }
+
+        .social-card {
+            background: var(--light);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .social-card .platform {
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        .social-card .preview-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .social-card .specs {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        /* Download info */
+        .download-info {
+            background: linear-gradient(135deg, var(--dark), #2d2d4a);
+            color: var(--white);
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .download-info h3 {
+            margin-bottom: 15px;
+        }
+
+        .download-info p {
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--orange);
+            color: var(--white);
+            border: none;
+            border-radius: 25px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 1.6rem; }
+            .icon-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 UmbaLabs 3D Icon Pack</h1>
+        <p class="subtitle">Logo 1: Stacked Layers — Complete icon set for all platforms</p>
+
+        <!-- Icon Only - Different Sizes -->
+        <div class="section">
+            <h2 class="section-title">📐 Icon Only (Multiple Sizes)</h2>
+            <div class="icon-grid">
+                <div class="icon-card">
+                    <div class="icon-preview light">
+                        <div class="layers-icon icon-512">
+                            <div class="layer l4"></div>
+                            <div class="layer l3"></div>
+                            <div class="layer l2"></div>
+                            <div class="layer l1"></div>
+                        </div>
+                    </div>
+                    <div class="icon-name">Extra Large</div>
+                    <div class="icon-size">512 × 512px</div>
+                    <div class="icon-use">App Store, Print</div>
+                </div>
+
+                <div class="icon-card">
+                    <div class="icon-preview light">
+                        <div class="layers-icon icon-256">
+                            <div class="layer l4"></div>
+                            <div class="layer l3"></div>
+                            <div class="layer l2"></div>
+                            <div class="layer l1"></div>
+                        </div>
+                    </div>
+                    <div class="icon-name">Large</div>
+                    <div class="icon-size">256 × 256px</div>
+                    <div class="icon-use">Desktop Icons</div>
+                </div>
+
+                <div class="icon-card">
+                    <div class="icon-preview light">
+                        <div class="layers-icon icon-128">
+                            <div class="layer l4"></div>
+                            <div class="layer l3"></div>
+                            <div class="layer l2"></div>
+                            <div class="layer l1"></div>
+                        </div>
+                    </div>
+                    <div class="icon-name">Medium</div>
+                    <div class="icon-size">128 × 128px</div>
+                    <div class="icon-use">Touch Icons</div>
+                </div>
+
+                <div class="icon-card">
+                    <div class="icon-preview light">
+                        <div class="layers-icon icon-64">
+                            <div class="layer l4"></div>
+                            <div class="layer l3"></div>
+                            <div class="layer l2"></div>
+                            <div class="layer l1"></div>
+                        </div>
+                    </div>
+                    <div class="icon-name">Small</div>
+                    <div class="icon-size">64 × 64px</div>
+                    <div class="icon-use">Toolbar, Tab</div>
+                </div>
+
+                <div class="icon-card">
+                    <div class="icon-preview light">
+                        <div class="layers-icon icon-32">
+                            <div class="layer l4"></div>
+                            <div class="layer l3"></div>
+                            <div class="layer l2"></div>
+                            <div class="layer l1"></div>
+                        </div>
+                    </div>
+                    <div class="icon-name">Tiny</div>
+                    <div class="icon-size">32 × 32px</div>
+                    <div class="icon-use">Favicon</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Circular Icons -->
+        <div class="section">
+            <h2 class="section-title">⭕ Circular Profile Icons</h2>
+            <div class="icon-grid">
+                <div class="icon-card">
+                    <div class="icon-preview checkerboard">
+                        <div class="circle-icon size-lg bg-dark">
+                            <div class="layers-icon icon-256 white-top">
+                                <div class="layer l4"></div>
+                                <div class="layer l3"></div>
+                                <div class="layer l2"></div>
+                                <div class="layer l1"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="icon-name">Dark Circle</div>
+                    <div class="icon-use">Instagram, TikTok</div>
+                </div>
+
+                <div class="icon-card">
+                    <div class="icon-preview dark">
+                        <div class="circle-icon size-lg bg-white">
+                            <div class="layers-icon icon-256">
+                                <div class="layer l4"></div>
+                                <div class="layer l3"></div>
+                                <div class="layer l2"></div>
+                                <div class="layer l1"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="icon-name">White Circle</div>
+                    <div class="icon-use">WhatsApp</div>
+                </div>
+
+                <div class="icon-card">
+                    <div class="icon-preview checkerboard">
+                        <div class="circle-icon size-lg bg-orange">
+                            <div class="layers-icon icon-256 white-top">
+                                <div class="layer l4"></div>
+                                <div class="layer l3"></div>
+                                <div class="layer l2"></div>
+                                <div class="layer l1" style="background: white;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="icon-name">Orange Circle</div>
+                    <div class="icon-use">Brand Highlight</div>
+                </div>
+
+                <div class="icon-card">
+                    <div class="icon-preview checkerboard">
+                        <div class="circle-icon size-lg bg-gradient">
+                            <div class="layers-icon icon-256 white-top">
+                                <div class="layer l4"></div>
+                                <div class="layer l3"></div>
+                                <div class="layer l2"></div>
+                                <div class="layer l1"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="icon-name">Gradient Circle</div>
+                    <div class="icon-use">Premium Look</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rounded Square Icons -->
+        <div class="section">
+            <h2 class="section-title">🔲 Rounded Square Icons</h2>
+            <div class="icon-grid">
+                <div class="icon-card">
+                    <div class="icon-preview checkerboard">
+                        <div class="rounded-icon size-lg bg-dark">
+                            <div class="layers-icon icon-256 white-top">
+                                <div class="layer l4"></div>
+                                <div class="layer l3"></div>
+                                <div class="layer l2"></div>
+                                <div class="layer l1"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="icon-name">Dark Rounded</div>
+                    <div class="icon-use">iOS App Icon</div>
+                </div>
+
+                <div class="icon-card">
+                    <div class="icon-preview dark">
+                        <div class="rounded-icon size-lg bg-white">
+                            <div class="layers-icon icon-256">
+                                <div class="layer l4"></div>
+                                <div class="layer l3"></div>
+                                <div class="layer l2"></div>
+                                <div class="layer l1"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="icon-name">White Rounded</div>
+                    <div class="icon-use">Light Mode App</div>
+                </div>
+
+                <div class="icon-card">
+                    <div class="icon-preview checkerboard">
+                        <div class="rounded-icon size-lg bg-gradient">
+                            <div class="layers-icon icon-256 white-top">
+                                <div class="layer l4"></div>
+                                <div class="layer l3"></div>
+                                <div class="layer l2"></div>
+                                <div class="layer l1" style="background: white;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="icon-name">Gradient Rounded</div>
+                    <div class="icon-use">Android App</div>
+                </div>
+
+                <div class="icon-card">
+                    <div class="icon-preview checkerboard">
+                        <div class="rounded-icon size-lg bg-teal">
+                            <div class="layers-icon icon-256 white-top">
+                                <div class="layer l4"></div>
+                                <div class="layer l3"></div>
+                                <div class="layer l2" style="background: white;"></div>
+                                <div class="layer l1"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="icon-name">Teal Rounded</div>
+                    <div class="icon-use">Alternative</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Full Logo Variations -->
+        <div class="section">
+            <h2 class="section-title">📝 Full Logo with Text</h2>
+            <div class="icon-grid">
+                <div class="icon-card">
+                    <div class="icon-preview light" style="min-height: 120px;">
+                        <div class="full-logo">
+                            <div class="layers-icon">
+                                <div class="layer l4"></div>
+                                <div class="layer l3"></div>
+                                <div class="layer l2"></div>
+                                <div class="layer l1"></div>
+                            </div>
+                            <div class="text">
+                                <div class="main">UMBA</div>
+                                <div class="sub">LABS 3D</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="icon-name">Horizontal Light</div>
+                    <div class="icon-use">Website Header</div>
+                </div>
+
+                <div class="icon-card">
+                    <div class="icon-preview dark" style="min-height: 120px;">
+                        <div class="full-logo white-text">
+                            <div class="layers-icon">
+                                <div class="layer l4"></div>
+                                <div class="layer l3"></div>
+                                <div class="layer l2"></div>
+                                <div class="layer l1"></div>
+                            </div>
+                            <div class="text">
+                                <div class="main">UMBA</div>
+                                <div class="sub">LABS 3D</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="icon-name">Horizontal Dark</div>
+                    <div class="icon-use">Dark Mode</div>
+                </div>
+
+                <div class="icon-card">
+                    <div class="icon-preview light" style="min-height: 160px;">
+                        <div class="stacked-logo">
+                            <div class="layers-icon">
+                                <div class="layer l4"></div>
+                                <div class="layer l3"></div>
+                                <div class="layer l2"></div>
+                                <div class="layer l1"></div>
+                            </div>
+                            <div class="text">
+                                <div class="main">UMBALABS</div>
+                                <div class="sub">3D PRINTING</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="icon-name">Stacked Light</div>
+                    <div class="icon-use">Square Posts</div>
+                </div>
+
+                <div class="icon-card">
+                    <div class="icon-preview dark" style="min-height: 160px;">
+                        <div class="stacked-logo white-text">
+                            <div class="layers-icon">
+                                <div class="layer l4"></div>
+                                <div class="layer l3"></div>
+                                <div class="layer l2"></div>
+                                <div class="layer l1"></div>
+                            </div>
+                            <div class="text">
+                                <div class="main">UMBALABS</div>
+                                <div class="sub">3D PRINTING</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="icon-name">Stacked Dark</div>
+                    <div class="icon-use">Social Posts</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Social Media Specific -->
+        <div class="section">
+            <h2 class="section-title">📱 Social Media Ready</h2>
+            <div class="social-grid">
+                <div class="social-card">
+                    <div class="platform">📸 Instagram</div>
+                    <div class="preview-container">
+                        <div class="circle-icon size-md bg-dark">
+                            <div class="layers-icon icon-128 white-top">
+                                <div class="layer l4"></div>
+                                <div class="layer l3"></div>
+                                <div class="layer l2"></div>
+                                <div class="layer l1"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="specs">320 × 320px recommended<br>Circular crop</div>
+                </div>
+
+                <div class="social-card">
+                    <div class="platform">🎵 TikTok</div>
+                    <div class="preview-container">
+                        <div class="circle-icon size-md bg-dark">
+                            <div class="layers-icon icon-128 white-top">
+                                <div class="layer l4"></div>
+                                <div class="layer l3"></div>
+                                <div class="layer l2"></div>
+                                <div class="layer l1"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="specs">200 × 200px minimum<br>Circular crop</div>
+                </div>
+
+                <div class="social-card">
+                    <div class="platform">💬 WhatsApp</div>
+                    <div class="preview-container">
+                        <div class="circle-icon size-md bg-white" style="border: 2px solid var(--orange);">
+                            <div class="layers-icon icon-128">
+                                <div class="layer l4"></div>
+                                <div class="layer l3"></div>
+                                <div class="layer l2"></div>
+                                <div class="layer l1"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="specs">500 × 500px recommended<br>Square upload, circular display</div>
+                </div>
+
+                <div class="social-card">
+                    <div class="platform">📘 Facebook</div>
+                    <div class="preview-container">
+                        <div class="circle-icon size-md bg-dark">
+                            <div class="layers-icon icon-128 white-top">
+                                <div class="layer l4"></div>
+                                <div class="layer l3"></div>
+                                <div class="layer l2"></div>
+                                <div class="layer l1"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="specs">170 × 170px on desktop<br>128 × 128px on mobile</div>
+                </div>
+
+                <div class="social-card">
+                    <div class="platform">🐦 Twitter/X</div>
+                    <div class="preview-container">
+                        <div class="circle-icon size-md bg-dark">
+                            <div class="layers-icon icon-128 white-top">
+                                <div class="layer l4"></div>
+                                <div class="layer l3"></div>
+                                <div class="layer l2"></div>
+                                <div class="layer l1"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="specs">400 × 400px recommended<br>Circular crop</div>
+                </div>
+
+                <div class="social-card">
+                    <div class="platform">🌐 Favicon</div>
+                    <div class="preview-container">
+                        <div class="rounded-icon size-sm bg-dark" style="border-radius: 8px;">
+                            <div class="layers-icon icon-64 white-top">
+                                <div class="layer l4"></div>
+                                <div class="layer l3"></div>
+                                <div class="layer l2"></div>
+                                <div class="layer l1"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="specs">32 × 32px / 16 × 16px<br>Square with rounded corners</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="download-info">
+            <h3>📥 Download Individual SVG Files</h3>
+            <p>All icons are included as separate SVG files in the icon pack download.</p>
+            <button class="download-btn" onclick="window.print()">Print / Save as PDF</button>
+        </div>
+    </div>
+</body>
+</html>

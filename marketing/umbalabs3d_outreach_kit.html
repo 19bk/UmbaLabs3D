@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UmbaLabs 3D - Outreach One Pager</title>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-orange: #ff6b35;
+      --primary-dark: #1a1a2e;
+      --accent-teal: #00d9c0;
+      --light-bg: #f8f9fa;
+      --white: #ffffff;
+      --gray-600: #6b7280;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: var(--light-bg);
+      color: var(--primary-dark);
+      line-height: 1.6;
+      padding: 40px 0;
+    }
+
+    .page {
+      width: min(900px, 92vw);
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: 18px;
+      padding: 36px;
+      box-shadow: 0 20px 50px rgba(26, 26, 46, 0.12);
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    header img {
+      width: 64px;
+      height: 64px;
+    }
+
+    h1, h2 {
+      font-family: "Archivo Black", sans-serif;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 4px;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      margin-top: 22px;
+      margin-bottom: 10px;
+    }
+
+    .subhead {
+      color: var(--gray-600);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .card {
+      border: 1px solid rgba(26, 26, 46, 0.1);
+      border-radius: 12px;
+      padding: 16px;
+      background: rgba(248, 249, 250, 0.6);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(255, 107, 53, 0.15);
+      font-weight: 600;
+      font-size: 0.85rem;
+      margin-right: 8px;
+      margin-top: 6px;
+    }
+
+    ul {
+      padding-left: 18px;
+      color: var(--gray-600);
+    }
+
+    .cta {
+      margin-top: 24px;
+      padding: 18px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary-dark), #2d2d4a);
+      color: var(--white);
+    }
+
+    .cta strong {
+      display: block;
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+
+    .contacts {
+      margin-top: 10px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .divider {
+      height: 1px;
+      background: rgba(26, 26, 46, 0.1);
+      margin: 22px 0;
+    }
+
+    .fine-print {
+      font-size: 0.85rem;
+      color: var(--gray-600);
+      margin-top: 10px;
+    }
+
+    @media print {
+      body {
+        background: var(--white);
+        padding: 0;
+      }
+
+      .page {
+        box-shadow: none;
+        border-radius: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <img src="umbalabs3d_icon.svg" alt="UmbaLabs 3D logo">
+      <div>
+        <h1>UmbaLabs 3D</h1>
+        <div class="subhead">Custom 3D printing for prototypes, architectural models, and functional parts in Nairobi.</div>
+      </div>
+    </header>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Why work with us</h2>
+        <ul>
+          <li>Clear pricing before production</li>
+          <li>Material guidance for strength and finish</li>
+          <li>Local delivery and quick updates</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Capabilities</h2>
+        <ul>
+          <li>Small to medium prototypes</li>
+          <li>Architectural models and mockups</li>
+          <li>Replacement parts and custom fixtures</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Materials</h2>
+        <ul>
+          <li>PLA for clean presentation</li>
+          <li>PETG for functional parts</li>
+          <li>Other materials on request</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <h2>Typical workflow</h2>
+    <div class="grid">
+      <div class="card">
+        <strong>1. Send your file</strong>
+        <p class="subhead">Share an STL/OBJ/STEP file or a sketch.</p>
+      </div>
+      <div class="card">
+        <strong>2. Approve quote</strong>
+        <p class="subhead">We confirm price, material, and timeline.</p>
+      </div>
+      <div class="card">
+        <strong>3. Receive print</strong>
+        <p class="subhead">We finish, quality-check, and deliver.</p>
+      </div>
+    </div>
+
+    <h2>Example use cases</h2>
+    <div class="grid">
+      <div class="card">
+        <strong>Architects</strong>
+        <p class="subhead">Scale models for client presentations and planning.</p>
+      </div>
+      <div class="card">
+        <strong>Product teams</strong>
+        <p class="subhead">Functional prototypes for fit and usability tests.</p>
+      </div>
+      <div class="card">
+        <strong>Operations</strong>
+        <p class="subhead">Replacement parts and custom fixtures.</p>
+      </div>
+    </div>
+
+    <div class="cta">
+      <strong>Request a quote</strong>
+      <div>Share your file and requirements. We respond with a clear plan and price.</div>
+      <div class="contacts">WhatsApp: 254XXXXXXXXX | Email: hello@umbalabs3d.com</div>
+    </div>
+
+    <div class="fine-print">Replace the contact details and add 2-3 real project photos before sending.</div>
+  </div>
+</body>
+</html>
