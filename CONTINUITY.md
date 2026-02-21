@@ -47,9 +47,13 @@ Launch UmbaLabs 3D as a profitable 3D printing service in Kenya:
 ├── tasks/           # Task tracking
 ├── website/         # Landing page (deployed to VPS)
 │   ├── index.html   # Main landing page (with upload form)
+│   ├── analytics.html # Admin analytics dashboard
 │   ├── favicon_32.svg
 │   ├── logo_horizontal_light.svg
 │   └── icon_circle_dark.svg
+├── clients/         # Client tracking (profiles, files, notes)
+│   ├── _template/   # Copy for new clients
+│   └── prado-radio-trim/  # First client project
 └── backend/         # Flask API source
     ├── app.py       # Flask v2.0 with database
     ├── requirements.txt
@@ -75,7 +79,7 @@ Launch UmbaLabs 3D as a profitable 3D printing service in Kenya:
 | Website HTML | Done | `website/index.html` (psychology-optimized) |
 | VPS Directory | Done | `/var/www/umbalabs3d/` on YOUR_SERVER_IP |
 | Caddy Config | Done | Added `umbalabs3d.saasita.space` block |
-| DNS A Record | **PENDING** | Add A record: `umbalabs3d` → `YOUR_SERVER_IP` |
+| DNS A Record | **DONE** | Resolves to `84.32.59.3`, HTTPS active |
 
 ### Website Features (Implemented)
 - WhatsApp floating button with SVG icon + pulse animation
@@ -91,6 +95,7 @@ Launch UmbaLabs 3D as a profitable 3D printing service in Kenya:
 - **User dashboard** (upload history with status badges)
 - **Design services section** (pricing for sketch-to-3D, photo-to-3D, etc.)
 - **3D Scanning "Coming Soon"** banner with waitlist signup
+- **Admin analytics dashboard** (Chart.js: daily visitors, funnel, devices, referrers, CTAs, scroll depth, hourly)
 - JavaScript form validation and async upload
 
 ### File Upload System v4.0 (DEPLOYED - 2026-02-04)
@@ -132,6 +137,7 @@ Launch UmbaLabs 3D as a profitable 3D printing service in Kenya:
 | `/api/stats` | GET | Dashboard stats |
 | `/api/uploads` | GET | List all uploads |
 | `/api/uploads/<id>` | GET/PATCH | Manage single upload |
+| `/api/analytics/dashboard` | GET | Full analytics dashboard data (?range=today\|7d\|30d\|all) |
 
 ### Design Services Pricing (High-Margin)
 | Service | Price | Turnaround | Margin |
@@ -148,7 +154,7 @@ Launch UmbaLabs 3D as a profitable 3D printing service in Kenya:
 | TikTok | @umbalabs3d | PENDING |
 | Twitter/X | @umbalabs3d | PENDING |
 | WhatsApp Business | TBD | PENDING |
-| Domain | umbalabs3d.saasita.space | DNS PENDING |
+| Domain | umbalabs3d.saasita.space | LIVE (HTTPS) |
 
 ---
 
@@ -169,6 +175,7 @@ Launch UmbaLabs 3D as a profitable 3D printing service in Kenya:
 - [x] **User dashboard** (upload history, status badges, linked uploads)
 - [x] **Design services section** (pricing: KES 1,500-5,000, WhatsApp CTA)
 - [x] **3D Scanning "Coming Soon"** banner with notify me CTA
+- [x] **Admin analytics dashboard** (`/api/analytics/dashboard` + `analytics.html` with Chart.js)
 
 ## Now
 - [x] ~~Deploy file upload system to VPS~~ (DONE 2026-02-04)
@@ -176,9 +183,12 @@ Launch UmbaLabs 3D as a profitable 3D printing service in Kenya:
 - [x] ~~Implement instant quoting~~ (DONE 2026-02-04 - STL parsing + auto-pricing)
 - [x] ~~Implement user authentication~~ (DONE 2026-02-04 - JWT + dashboard)
 - [x] ~~Deploy v4.0 to VPS~~ (DONE 2026-02-04 - user auth live)
-- [ ] **Add DNS A record**: `umbalabs3d` → `YOUR_SERVER_IP` in Porkbun/DNS provider
-- [ ] Verify HTTPS works after DNS propagation
+- [x] ~~Add DNS A record~~ (DONE — resolves to 84.32.59.3)
+- [x] ~~Verify HTTPS works~~ (DONE — Caddy auto-cert, HTTP→HTTPS 308 redirect)
 - [x] ~~Replace `254XXXXXXXXX` with real WhatsApp number~~ (DONE - 254719281149)
+- [x] ~~Admin analytics dashboard~~ (DONE 2026-02-09 — `/api/analytics/dashboard` + `analytics.html`)
+- [x] Product strategy & profit projections v2.0 (DONE 2026-02-19 — `docs/3d_print_product_strategy.md` + PDF)
+- [x] Client tracking system (DONE 2026-02-21 — `clients/` with template + first client)
 
 ## Next
 - [ ] Register social media handles (@umbalabs3d on all platforms)
@@ -186,6 +196,9 @@ Launch UmbaLabs 3D as a profitable 3D printing service in Kenya:
 - [ ] Create first TikTok content (behind-the-scenes, print timelapses)
 - [ ] Post first Jiji listings
 - [ ] First customer outreach campaign
+- [ ] Buy 2 PLA spools (White + Black) — KES 7,000
+- [ ] Print first 3 phone stands (black) from MakerWorld #470013
+- [ ] Print first 2 desk organizer modules (black) from MakerWorld #1470721
 
 ---
 

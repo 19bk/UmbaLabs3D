@@ -1157,6 +1157,180 @@ def get_stats():
         'generated_at': now.isoformat()
     }), 200
 
+@app.route('/api/analytics/dashboard', methods=['GET'])
+def analytics_dashboard():
+    """Comprehensive analytics dashboard data."""
+    try:
+        db = get_db()
+        now = datetime.now()
+
+        # --- Date range filter ---
+        range_param = request.args.get('range', '30d')
+        if range_param == 'today':
+            since = now.strftime('%Y-%m-%d')
+        elif range_param == '7d':
+            since = (now - timedelta(days=7)).strftime('%Y-%m-%d')
+        elif range_param == 'all':
+            since = '2000-01-01'
+        else:  # default 30d
+            since = (now - timedelta(days=30)).strftime('%Y-%m-%d')
+
+        # === OVERVIEW CARDS ===
+        total_pageviews = db.execute(
+            'SELECT COALESCE(SUM(views), 0) FROM page_views WHERE date >= ?', (since,)
+        ).fetchone()[0]
+
+        unique_sessions = db.execute(
+            'SELECT COUNT(DISTINCT session_id) FROM analytics WHERE created_at >= ? AND session_id IS NOT NULL', (since,)
+        ).fetchone()[0]
+
+        registered_users = db.execute('SELECT COUNT(*) FROM users').fetchone()[0]
+
+        total_uploads = db.execute(
+            'SELECT COUNT(*) FROM uploads WHERE created_at >= ?', (since,)
+        ).fetchone()[0]
+
+        quotes_generated = db.execute(
+            "SELECT COUNT(*) FROM analytics WHERE event_type IN ('quote_generated', 'instant_quote') AND created_at >= ?", (since,)
+        ).fetchone()[0]
+
+        orders_submitted = db.execute(
+            "SELECT COUNT(*) FROM analytics WHERE event_type = 'order_submitted' AND created_at >= ?", (since,)
+        ).fetchone()[0]
+
+        # === DAILY VISITORS CHART (always 30 days) ===
+        thirty_days_ago = (now - timedelta(days=30)).strftime('%Y-%m-%d')
+        daily_visitors = db.execute(
+            'SELECT date, SUM(views) as total_views FROM page_views WHERE date >= ? GROUP BY date ORDER BY date', (thirty_days_ago,)
+        ).fetchall()
+
+        # === CONVERSION FUNNEL ===
+        funnel_stages = ['pageview', 'section_view', 'cta_click', 'upload_start', 'upload_complete', 'quote_generated', 'instant_quote', 'order_submitted']
+        funnel_data = {}
+        for stage in funnel_stages:
+            count = db.execute(
+                "SELECT COUNT(*) FROM analytics WHERE event_type = ? AND created_at >= ?", (stage, since)
+            ).fetchone()[0]
+            if count > 0:
+                funnel_data[stage] = count
+
+        # === EVENT TYPE BREAKDOWN ===
+        event_types = db.execute(
+            'SELECT event_type, COUNT(*) as count FROM analytics WHERE created_at >= ? GROUP BY event_type ORDER BY count DESC',
+            (since,)
+        ).fetchall()
+
+        # === DEVICE BREAKDOWN ===
+        user_agents = db.execute(
+            'SELECT user_agent FROM analytics WHERE created_at >= ? AND user_agent IS NOT NULL', (since,)
+        ).fetchall()
+
+        devices = {'Mobile': 0, 'Desktop': 0, 'Tablet': 0}
+        for row in user_agents:
+            ua = (row['user_agent'] or '').lower()
+            if any(k in ua for k in ['mobile', 'android', 'iphone']):
+                devices['Mobile'] += 1
+            elif any(k in ua for k in ['ipad', 'tablet']):
+                devices['Tablet'] += 1
+            else:
+                devices['Desktop'] += 1
+
+        # === TOP REFERRERS ===
+        referrers = db.execute(
+            "SELECT referrer, COUNT(*) as count FROM analytics WHERE created_at >= ? AND referrer IS NOT NULL AND referrer != '' GROUP BY referrer ORDER BY count DESC LIMIT 10",
+            (since,)
+        ).fetchall()
+
+        # === UTM SOURCES ===
+        utm_sources = db.execute(
+            "SELECT utm_source, COUNT(*) as count FROM uploads WHERE created_at >= ? AND utm_source IS NOT NULL AND utm_source != '' GROUP BY utm_source ORDER BY count DESC LIMIT 10",
+            (since,)
+        ).fetchall()
+
+        # === POPULAR MATERIALS ===
+        materials = db.execute(
+            "SELECT selected_material, COUNT(*) as count FROM uploads WHERE created_at >= ? AND selected_material IS NOT NULL GROUP BY selected_material ORDER BY count DESC",
+            (since,)
+        ).fetchall()
+
+        # === CTA CLICKS (parse metadata JSON) ===
+        cta_rows = db.execute(
+            "SELECT metadata FROM analytics WHERE event_type = 'cta_click' AND created_at >= ? AND metadata IS NOT NULL",
+            (since,)
+        ).fetchall()
+
+        cta_clicks = {}
+        for row in cta_rows:
+            try:
+                meta = json.loads(row['metadata'])
+                button = meta.get('button') or meta.get('text') or meta.get('label') or 'Unknown'
+                cta_clicks[button] = cta_clicks.get(button, 0) + 1
+            except (json.JSONDecodeError, TypeError):
+                pass
+
+        # === SCROLL DEPTH (parse metadata JSON) ===
+        scroll_rows = db.execute(
+            "SELECT metadata FROM analytics WHERE event_type = 'scroll' AND created_at >= ? AND metadata IS NOT NULL",
+            (since,)
+        ).fetchall()
+
+        scroll_depth = {'25%': 0, '50%': 0, '75%': 0, '100%': 0}
+        for row in scroll_rows:
+            try:
+                meta = json.loads(row['metadata'])
+                depth = str(meta.get('depth', ''))
+                key = f"{depth}%" if not depth.endswith('%') else depth
+                if key in scroll_depth:
+                    scroll_depth[key] += 1
+            except (json.JSONDecodeError, TypeError):
+                pass
+
+        # === HOURLY DISTRIBUTION ===
+        hourly = db.execute(
+            "SELECT strftime('%%H', created_at) as hour, COUNT(*) as count FROM analytics WHERE created_at >= ? GROUP BY hour ORDER BY hour",
+            (since,)
+        ).fetchall()
+
+        # === RECENT ACTIVITY ===
+        recent = db.execute(
+            'SELECT event_type, page, referrer, session_id, metadata, created_at FROM analytics ORDER BY created_at DESC LIMIT 20'
+        ).fetchall()
+
+        return jsonify({
+            'overview': {
+                'pageviews': total_pageviews,
+                'sessions': unique_sessions,
+                'users': registered_users,
+                'uploads': total_uploads,
+                'quotes': quotes_generated,
+                'orders': orders_submitted,
+            },
+            'daily_visitors': [{'date': r['date'], 'views': r['total_views']} for r in daily_visitors],
+            'funnel': funnel_data,
+            'event_types': [{'type': r['event_type'], 'count': r['count']} for r in event_types],
+            'devices': devices,
+            'referrers': [{'referrer': r['referrer'], 'count': r['count']} for r in referrers],
+            'utm_sources': [{'source': r['utm_source'], 'count': r['count']} for r in utm_sources],
+            'materials': [{'material': r['selected_material'], 'count': r['count']} for r in materials],
+            'cta_clicks': cta_clicks,
+            'scroll_depth': scroll_depth,
+            'hourly': [{'hour': r['hour'], 'count': r['count']} for r in hourly],
+            'recent_activity': [{
+                'event': r['event_type'],
+                'page': r['page'],
+                'referrer': r['referrer'],
+                'session': r['session_id'],
+                'metadata': r['metadata'],
+                'time': r['created_at']
+            } for r in recent],
+            'range': range_param,
+            'generated_at': now.isoformat()
+        }), 200
+
+    except Exception as e:
+        logger.error(f"Analytics dashboard error: {e}")
+        return jsonify({'error': 'Failed to load analytics'}), 500
+
 @app.route('/api/uploads', methods=['GET'])
 def list_uploads():
     db = get_db()

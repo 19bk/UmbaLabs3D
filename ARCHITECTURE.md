@@ -52,6 +52,7 @@ UmbaLabs 3D is a 3D printing service website with file upload capabilities, cust
 | File | Purpose |
 |------|---------|
 | `index.html` | Main landing page with upload form |
+| `analytics.html` | Admin analytics dashboard (Chart.js) |
 | `favicon_32.svg` | Browser tab icon |
 | `logo_horizontal_light.svg` | Header logo |
 | `icon_circle_dark.svg` | Footer icon |
@@ -101,6 +102,7 @@ UmbaLabs 3D is a 3D printing service website with file upload capabilities, cust
 | `/api/upload` | POST | File upload with optional material/price | JWT Optional |
 | `/api/track` | POST | Analytics event | None |
 | `/api/stats` | GET | Dashboard stats | None |
+| `/api/analytics/dashboard` | GET | Comprehensive analytics (charts, funnel, devices) | None |
 | `/api/uploads` | GET | List uploads | None |
 | `/api/uploads/<id>` | GET | Get single upload | None |
 | `/api/uploads/<id>` | PATCH | Update upload | None |
@@ -398,6 +400,7 @@ WantedBy=multi-user.target
 
 /var/www/umbalabs3d/        # Static website
 ├── index.html
+├── analytics.html
 ├── favicon_32.svg
 ├── logo_horizontal_light.svg
 └── icon_circle_dark.svg
@@ -431,6 +434,12 @@ curl https://umbalabs3d.saasita.space/api/health
 ### View Stats
 ```bash
 curl https://umbalabs3d.saasita.space/api/stats
+```
+
+### Analytics Dashboard
+```bash
+# API: curl https://umbalabs3d.saasita.space/api/analytics/dashboard?range=30d
+# Web: https://umbalabs3d.saasita.space/analytics.html
 ```
 
 ### Service Status
@@ -491,9 +500,9 @@ ssh root@YOUR_SERVER_IP "chmod 644 /var/www/umbalabs3d/*.svg"
    - Daraja API for payments
    - Auto-confirm orders
 
-4. **Admin Dashboard**
-   - Web-based upload management
-   - Analytics visualization
+4. ~~**Admin Dashboard**~~ ✅ Implemented in v4.1
+   - Analytics visualization (`analytics.html`)
+   - Charts: daily visitors, conversion funnel, devices, referrers, CTAs, scroll depth, hourly traffic
 
 ---
 
@@ -501,6 +510,7 @@ ssh root@YOUR_SERVER_IP "chmod 644 /var/www/umbalabs3d/*.svg"
 
 | Date | Version | Changes |
 |------|---------|---------|
+| 2026-02-09 | 4.1 | Added analytics dashboard: `/api/analytics/dashboard` endpoint, `analytics.html` with Chart.js visualizations |
 | 2026-02-04 | 4.0 | Added user authentication: users table, JWT tokens, login/register endpoints, user dashboard, upload history |
 | 2026-02-04 | 3.0 | Added instant quoting: STL parsing, volume calculation, material pricing (PLA/PETG/RESIN), updated UI |
 | 2026-02-04 | 2.0 | Added SQLite database, analytics tracking, isolated project structure |

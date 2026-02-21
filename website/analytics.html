@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Dashboard - UmbaLabs 3D</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+    <style>
+        :root {
+            --orange: #FF6B35;
+            --navy: #1A1A2E;
+            --gold: #F7B801;
+            --teal: #00D9C0;
+            --white: #FFFFFF;
+            --card-bg: #16213E;
+            --card-border: #0F3460;
+            --text-muted: #8892B0;
+            --purple: #A855F7;
+            --pink: #EC4899;
+            --emerald: #10B981;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--navy);
+            color: var(--white);
+            min-height: 100vh;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid var(--card-border);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header-left img { height: 32px; }
+
+        .header-left h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .header-left a {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            text-decoration: none;
+        }
+        .header-left a:hover { color: var(--teal); }
+
+        .range-btns {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .range-btns button {
+            padding: 0.4rem 1rem;
+            border: 1px solid var(--card-border);
+            background: transparent;
+            color: var(--text-muted);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.2s;
+        }
+
+        .range-btns button:hover { border-color: var(--orange); color: var(--white); }
+        .range-btns button.active {
+            background: var(--orange);
+            border-color: var(--orange);
+            color: var(--white);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        /* Overview Cards */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.25rem;
+        }
+
+        .card-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .card:nth-child(1) .card-value { color: var(--orange); }
+        .card:nth-child(2) .card-value { color: var(--teal); }
+        .card:nth-child(3) .card-value { color: var(--gold); }
+        .card:nth-child(4) .card-value { color: var(--purple); }
+        .card:nth-child(5) .card-value { color: var(--emerald); }
+        .card:nth-child(6) .card-value { color: var(--pink); }
+
+        /* Chart Grid */
+        .chart-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .chart-box {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.25rem;
+        }
+
+        .chart-box.full { grid-column: 1 / -1; }
+
+        .chart-box h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            min-height: 250px;
+        }
+
+        .chart-container canvas { width: 100% !important; }
+
+        .no-data {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Recent Activity Table */
+        .activity-table {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            overflow-x: auto;
+        }
+
+        .activity-table h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.8rem;
+        }
+
+        th {
+            text-align: left;
+            padding: 0.6rem 0.75rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            border-bottom: 1px solid var(--card-border);
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 0.6rem 0.75rem;
+            border-bottom: 1px solid rgba(15, 52, 96, 0.5);
+            max-width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .badge-pageview { background: rgba(0, 217, 192, 0.15); color: var(--teal); }
+        .badge-click { background: rgba(255, 107, 53, 0.15); color: var(--orange); }
+        .badge-upload { background: rgba(168, 85, 247, 0.15); color: var(--purple); }
+        .badge-scroll { background: rgba(247, 184, 1, 0.15); color: var(--gold); }
+        .badge-default { background: rgba(136, 146, 176, 0.15); color: var(--text-muted); }
+
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-muted);
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            border: 3px solid var(--card-border);
+            border-top-color: var(--orange);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header { padding: 1rem; }
+            .container { padding: 1rem; }
+            .chart-grid { grid-template-columns: 1fr; }
+            .chart-box.full { grid-column: 1; }
+            .cards { grid-template-columns: repeat(2, 1fr); }
+            .card-value { font-size: 1.5rem; }
+        }
+
+        @media (max-width: 480px) {
+            .cards { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-left">
+            <img src="/logo_horizontal_light.svg" alt="UmbaLabs 3D" onerror="this.style.display='none'">
+            <h1>Analytics Dashboard</h1>
+            <a href="/">&larr; Back to site</a>
+        </div>
+        <div class="range-btns">
+            <button data-range="today">Today</button>
+            <button data-range="7d">7 Days</button>
+            <button data-range="30d" class="active">30 Days</button>
+            <button data-range="all">All Time</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Overview Cards -->
+        <div class="cards">
+            <div class="card"><div class="card-label">Pageviews</div><div class="card-value" id="c-pageviews">--</div></div>
+            <div class="card"><div class="card-label">Sessions</div><div class="card-value" id="c-sessions">--</div></div>
+            <div class="card"><div class="card-label">Users</div><div class="card-value" id="c-users">--</div></div>
+            <div class="card"><div class="card-label">Uploads</div><div class="card-value" id="c-uploads">--</div></div>
+            <div class="card"><div class="card-label">Quotes</div><div class="card-value" id="c-quotes">--</div></div>
+            <div class="card"><div class="card-label">Orders</div><div class="card-value" id="c-orders">--</div></div>
+        </div>
+
+        <!-- Charts -->
+        <div class="chart-grid">
+            <div class="chart-box full">
+                <h3>Daily Visitors (30 Days)</h3>
+                <div class="chart-container"><canvas id="chart-daily"></canvas></div>
+            </div>
+
+            <div class="chart-box full">
+                <h3>Conversion Funnel</h3>
+                <div class="chart-container"><canvas id="chart-funnel"></canvas></div>
+            </div>
+
+            <div class="chart-box">
+                <h3>Event Types</h3>
+                <div class="chart-container"><canvas id="chart-events"></canvas></div>
+            </div>
+
+            <div class="chart-box">
+                <h3>Device Breakdown</h3>
+                <div class="chart-container"><canvas id="chart-devices"></canvas></div>
+            </div>
+
+            <div class="chart-box">
+                <h3>Top Referrers</h3>
+                <div class="chart-container"><canvas id="chart-referrers"></canvas></div>
+            </div>
+
+            <div class="chart-box">
+                <h3>Popular Materials</h3>
+                <div class="chart-container"><canvas id="chart-materials"></canvas></div>
+            </div>
+
+            <div class="chart-box">
+                <h3>CTA Clicks</h3>
+                <div class="chart-container"><canvas id="chart-cta"></canvas></div>
+            </div>
+
+            <div class="chart-box">
+                <h3>Scroll Depth</h3>
+                <div class="chart-container"><canvas id="chart-scroll"></canvas></div>
+            </div>
+
+            <div class="chart-box full">
+                <h3>Hourly Traffic Distribution</h3>
+                <div class="chart-container"><canvas id="chart-hourly"></canvas></div>
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="activity-table">
+            <h3>Recent Activity (Last 20 Events)</h3>
+            <table>
+                <thead>
+                    <tr><th>Time</th><th>Event</th><th>Page</th><th>Referrer</th><th>Details</th></tr>
+                </thead>
+                <tbody id="activity-body">
+                    <tr><td colspan="5" class="loading"><div class="loading-spinner"></div></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+    const COLORS = {
+        orange: '#FF6B35', teal: '#00D9C0', gold: '#F7B801',
+        purple: '#A855F7', pink: '#EC4899', emerald: '#10B981',
+        navy: '#1A1A2E', cardBg: '#16213E', muted: '#8892B0'
+    };
+    const PALETTE = [COLORS.orange, COLORS.teal, COLORS.gold, COLORS.purple, COLORS.pink, COLORS.emerald, '#6366F1', '#F43F5E', '#14B8A6', '#EAB308'];
+
+    const chartDefaults = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: { labels: { color: COLORS.muted, font: { family: 'Inter', size: 11 } } }
+        },
+        scales: {
+            x: { ticks: { color: COLORS.muted, font: { size: 10 } }, grid: { color: 'rgba(15,52,96,0.5)' } },
+            y: { ticks: { color: COLORS.muted, font: { size: 10 } }, grid: { color: 'rgba(15,52,96,0.5)' } }
+        }
+    };
+
+    let charts = {};
+
+    function destroyCharts() {
+        Object.values(charts).forEach(c => c.destroy());
+        charts = {};
+    }
+
+    function noData(canvasId) {
+        const canvas = document.getElementById(canvasId);
+        const container = canvas.parentElement;
+        canvas.style.display = 'none';
+        let msg = container.querySelector('.no-data');
+        if (!msg) {
+            msg = document.createElement('div');
+            msg.className = 'no-data';
+            msg.textContent = 'No data yet';
+            container.appendChild(msg);
+        }
+    }
+
+    function showCanvas(canvasId) {
+        const canvas = document.getElementById(canvasId);
+        canvas.style.display = 'block';
+        const msg = canvas.parentElement.querySelector('.no-data');
+        if (msg) msg.remove();
+    }
+
+    function createChart(id, type, data, options = {}) {
+        showCanvas(id);
+        if (!data.datasets[0]?.data?.length && !data.labels?.length) {
+            noData(id);
+            return null;
+        }
+        const hasData = data.datasets.some(ds => ds.data && ds.data.some(v => v > 0));
+        if (!hasData) {
+            noData(id);
+            return null;
+        }
+        const ctx = document.getElementById(id).getContext('2d');
+        const merged = JSON.parse(JSON.stringify(chartDefaults));
+        Object.assign(merged, options);
+        if (options.plugins) merged.plugins = { ...chartDefaults.plugins, ...options.plugins };
+        if (options.scales) merged.scales = { ...chartDefaults.scales, ...options.scales };
+        charts[id] = new Chart(ctx, { type, data, options: merged });
+        return charts[id];
+    }
+
+    function formatNum(n) {
+        if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
+        if (n >= 1000) return (n / 1000).toFixed(1) + 'K';
+        return n.toString();
+    }
+
+    function eventBadge(type) {
+        if (type.includes('pageview')) return 'badge-pageview';
+        if (type.includes('click')) return 'badge-click';
+        if (type.includes('upload') || type.includes('quote')) return 'badge-upload';
+        if (type.includes('scroll')) return 'badge-scroll';
+        return 'badge-default';
+    }
+
+    function timeAgo(dateStr) {
+        const d = new Date(dateStr);
+        const now = new Date();
+        const diff = Math.floor((now - d) / 1000);
+        if (diff < 60) return diff + 's ago';
+        if (diff < 3600) return Math.floor(diff / 60) + 'm ago';
+        if (diff < 86400) return Math.floor(diff / 3600) + 'h ago';
+        return Math.floor(diff / 86400) + 'd ago';
+    }
+
+    function truncate(str, len) {
+        if (!str) return '-';
+        return str.length > len ? str.substring(0, len) + '...' : str;
+    }
+
+    async function loadDashboard(range) {
+        destroyCharts();
+
+        // Update active button
+        document.querySelectorAll('.range-btns button').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.range === range);
+        });
+
+        try {
+            const resp = await fetch('/api/analytics/dashboard?range=' + range);
+            if (!resp.ok) throw new Error('API error ' + resp.status);
+            const data = await resp.json();
+
+            // --- Overview Cards ---
+            const o = data.overview;
+            document.getElementById('c-pageviews').textContent = formatNum(o.pageviews);
+            document.getElementById('c-sessions').textContent = formatNum(o.sessions);
+            document.getElementById('c-users').textContent = formatNum(o.users);
+            document.getElementById('c-uploads').textContent = formatNum(o.uploads);
+            document.getElementById('c-quotes').textContent = formatNum(o.quotes);
+            document.getElementById('c-orders').textContent = formatNum(o.orders);
+
+            // --- Daily Visitors ---
+            createChart('chart-daily', 'line', {
+                labels: data.daily_visitors.map(d => d.date.slice(5)),
+                datasets: [{
+                    label: 'Page Views',
+                    data: data.daily_visitors.map(d => d.views),
+                    borderColor: COLORS.orange,
+                    backgroundColor: 'rgba(255,107,53,0.1)',
+                    fill: true,
+                    tension: 0.3,
+                    pointRadius: 3,
+                    pointBackgroundColor: COLORS.orange
+                }]
+            }, { plugins: { legend: { display: false } } });
+
+            // --- Conversion Funnel ---
+            const funnelLabels = Object.keys(data.funnel);
+            const funnelValues = Object.values(data.funnel);
+            createChart('chart-funnel', 'bar', {
+                labels: funnelLabels.map(l => l.replace(/_/g, ' ')),
+                datasets: [{
+                    label: 'Count',
+                    data: funnelValues,
+                    backgroundColor: funnelLabels.map((_, i) => PALETTE[i % PALETTE.length]),
+                    borderRadius: 4
+                }]
+            }, {
+                indexAxis: 'y',
+                plugins: { legend: { display: false } }
+            });
+
+            // --- Event Types ---
+            createChart('chart-events', 'bar', {
+                labels: data.event_types.map(e => e.type.replace(/_/g, ' ')),
+                datasets: [{
+                    label: 'Events',
+                    data: data.event_types.map(e => e.count),
+                    backgroundColor: data.event_types.map((_, i) => PALETTE[i % PALETTE.length]),
+                    borderRadius: 4
+                }]
+            }, {
+                indexAxis: 'y',
+                plugins: { legend: { display: false } }
+            });
+
+            // --- Device Breakdown ---
+            const devLabels = Object.keys(data.devices);
+            const devValues = Object.values(data.devices);
+            createChart('chart-devices', 'doughnut', {
+                labels: devLabels,
+                datasets: [{
+                    data: devValues,
+                    backgroundColor: [COLORS.orange, COLORS.teal, COLORS.gold],
+                    borderWidth: 0
+                }]
+            }, {
+                scales: { x: { display: false }, y: { display: false } },
+                plugins: { legend: { position: 'bottom' } }
+            });
+
+            // --- Top Referrers ---
+            createChart('chart-referrers', 'bar', {
+                labels: data.referrers.map(r => {
+                    try { return new URL(r.referrer).hostname; } catch { return truncate(r.referrer, 25); }
+                }),
+                datasets: [{
+                    label: 'Visits',
+                    data: data.referrers.map(r => r.count),
+                    backgroundColor: COLORS.teal,
+                    borderRadius: 4
+                }]
+            }, {
+                indexAxis: 'y',
+                plugins: { legend: { display: false } }
+            });
+
+            // --- Popular Materials ---
+            createChart('chart-materials', 'bar', {
+                labels: data.materials.map(m => m.material),
+                datasets: [{
+                    label: 'Uploads',
+                    data: data.materials.map(m => m.count),
+                    backgroundColor: [COLORS.orange, COLORS.teal, COLORS.gold, COLORS.purple],
+                    borderRadius: 4
+                }]
+            }, { plugins: { legend: { display: false } } });
+
+            // --- CTA Clicks ---
+            const ctaLabels = Object.keys(data.cta_clicks);
+            const ctaValues = Object.values(data.cta_clicks);
+            createChart('chart-cta', 'bar', {
+                labels: ctaLabels,
+                datasets: [{
+                    label: 'Clicks',
+                    data: ctaValues,
+                    backgroundColor: COLORS.orange,
+                    borderRadius: 4
+                }]
+            }, {
+                indexAxis: 'y',
+                plugins: { legend: { display: false } }
+            });
+
+            // --- Scroll Depth ---
+            const scrollLabels = Object.keys(data.scroll_depth);
+            const scrollValues = Object.values(data.scroll_depth);
+            createChart('chart-scroll', 'bar', {
+                labels: scrollLabels,
+                datasets: [{
+                    label: 'Users',
+                    data: scrollValues,
+                    backgroundColor: [COLORS.emerald, COLORS.teal, COLORS.gold, COLORS.orange],
+                    borderRadius: 4
+                }]
+            }, { plugins: { legend: { display: false } } });
+
+            // --- Hourly Traffic ---
+            const hours = Array.from({ length: 24 }, (_, i) => String(i).padStart(2, '0'));
+            const hourlyMap = {};
+            data.hourly.forEach(h => { hourlyMap[h.hour] = h.count; });
+            createChart('chart-hourly', 'bar', {
+                labels: hours.map(h => h + ':00'),
+                datasets: [{
+                    label: 'Events',
+                    data: hours.map(h => hourlyMap[h] || 0),
+                    backgroundColor: hours.map(h => {
+                        const v = hourlyMap[h] || 0;
+                        const max = Math.max(...Object.values(hourlyMap), 1);
+                        const alpha = 0.3 + (v / max) * 0.7;
+                        return `rgba(255,107,53,${alpha})`;
+                    }),
+                    borderRadius: 2
+                }]
+            }, { plugins: { legend: { display: false } } });
+
+            // --- Recent Activity Table ---
+            const tbody = document.getElementById('activity-body');
+            if (!data.recent_activity.length) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--text-muted)">No recent activity</td></tr>';
+            } else {
+                tbody.innerHTML = data.recent_activity.map(r => {
+                    let details = '-';
+                    if (r.metadata) {
+                        try { const m = JSON.parse(r.metadata); details = truncate(JSON.stringify(m), 40); } catch {}
+                    }
+                    return `<tr>
+                        <td title="${r.time || ''}">${r.time ? timeAgo(r.time) : '-'}</td>
+                        <td><span class="badge ${eventBadge(r.event)}">${r.event}</span></td>
+                        <td>${truncate(r.page, 30)}</td>
+                        <td>${truncate(r.referrer, 30)}</td>
+                        <td>${details}</td>
+                    </tr>`;
+                }).join('');
+            }
+
+        } catch (err) {
+            console.error('Dashboard load error:', err);
+            document.getElementById('activity-body').innerHTML =
+                '<tr><td colspan="5" style="text-align:center;color:var(--orange)">Failed to load analytics. Check API connection.</td></tr>';
+        }
+    }
+
+    // Date range buttons
+    document.querySelectorAll('.range-btns button').forEach(btn => {
+        btn.addEventListener('click', () => loadDashboard(btn.dataset.range));
+    });
+
+    // Load on page ready
+    loadDashboard('30d');
+    </script>
+</body>
+</html>
