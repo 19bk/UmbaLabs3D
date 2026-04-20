@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<model xmlns="http://schemas.microsoft.com/3dmanufacturing/core/2015/02" xmlns:p="http://schemas.microsoft.com/3dmanufacturing/production/2015/06" unit="millimeter" xml:lang="en-US" requiredextensions="p" xmlns:BambuStudio="http://schemas.bambulab.com/package/2021">
+ <metadata name="Application">BambuStudio-02.00.03.54</metadata>
+ <metadata name="BambuStudio:3mfVersion">1</metadata>
+ <metadata name="Copyright" />
+ <metadata name="CreationDate">2025-05-20</metadata>
+ <metadata name="Description">&amp;lt;p&amp;gt;A small, charming elephant model that can be used as a gift, toy, desk decoration, or even a game piece for board games.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;amp;nbsp;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;This model can be printed at its default size or scaled up or down to fit your needs – from tiny tokens to larger decorative figures.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;amp;nbsp;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;Supports are required . The model is designed to be printer-friendly, with a stable base and well-balanced shape.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;amp;nbsp;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;Model size from print profile is around 40x42x40mm, requires ~10g of filament and prints in less than 1 hour.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;amp;nbsp;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;This model can easily be turned into a keychain.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;amp;nbsp;&amp;lt;/p&amp;gt;&amp;lt;h3&amp;gt;Print info:&amp;lt;/h3&amp;gt;&amp;lt;ul&amp;gt;&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;&amp;lt;u&amp;gt;Print with supports!&amp;lt;/u&amp;gt;&amp;lt;/strong&amp;gt;&amp;lt;/li&amp;gt;&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;&amp;lt;u&amp;gt;Beginner-friendly, easy supports&amp;lt;/u&amp;gt;&amp;lt;/strong&amp;gt;&amp;lt;/li&amp;gt;&amp;lt;li&amp;gt;Designed for stress-free printing&amp;lt;/li&amp;gt;&amp;lt;/ul&amp;gt;</metadata>
+ <metadata name="Designer">Kacper1263</metadata>
+ <metadata name="DesignerCover">2025-05-20_d75d203f8671d.jpg</metadata>
+ <metadata name="DesignerUserId">217702154</metadata>
+ <metadata name="License">Standard Digital File License</metadata>
+ <metadata name="ModificationDate">2025-05-20</metadata>
+ <metadata name="Origin">original</metadata>
+ <metadata name="Thumbnail_Middle">/Metadata/plate_1.png</metadata>
+ <metadata name="Thumbnail_Small">/Metadata/plate_1_small.png</metadata>
+ <metadata name="Title">Cute little elephant</metadata>
+ <resources>
+  <object id="2" p:UUID="00000004-61cb-4c03-9d28-80fed5dfa1dc" type="model">
+   <components>
+    <component p:path="/3D/Objects/object_4.model" objectid="1" p:UUID="00040000-b206-40ff-9872-83e8017abed1" transform="1 0 0 0 1 0 0 0 1 0 -2.38418579e-07 0" />
+   </components>
+  </object>
+ </resources>
+ <build p:UUID="2c7c17d8-22b5-4d84-8835-1976022ea369">
+  <item objectid="2" p:UUID="00000002-b1ec-4553-aec9-835e5b724bb4" transform="3.59712234 0 0 0 3.59712234 0 0 0 3.59712234 128 128 20" printable="1" />
+ </build>
+<metadata name="CopyRight">"[]"</metadata><metadata name="ProfileTitle">0.16mm layer, 3 walls, 9% infill</metadata><metadata name="ProfileCover">2025-05-20_52a21d7e0368d.jpg</metadata><metadata name="ProfileDescription">&amp;lt;p&amp;gt;print with supports&amp;lt;/p&amp;gt;</metadata><metadata name="ProfileUserId">217702154</metadata><metadata name="ProfileUserName">Kacper1263</metadata><metadata name="DesignRegion">US</metadata><metadata name="DesignModelId">USa834a7a4914d5e</metadata><metadata name="DesignProfileId">306209285</metadata></model>

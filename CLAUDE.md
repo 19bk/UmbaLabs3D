@@ -1,5 +1,10 @@
 ## Workflow Orchestration
 
+### 0. Session Start (MANDATORY)
+- Read `tasks/3d-lessons.md` — check which rules apply to the current task
+- Read relevant .scad files BEFORE proposing any changes
+- If modifying an STL: render the ORIGINAL from all relevant angles, count every feature
+
 ### 1. Plan Mode Default
 Enter plan mode for ANY non-trivial task (3+ steps or architectural decisions)
 If something goes sideways, STOP and re-plan immediately - don't keep pushing
@@ -12,10 +17,13 @@ For complex problems, throw more compute at it via subagents
 One task per subagent for focused execution
 
 ### 3. Self-Improvement Loop
-After ANY correction from the user: update 'tasks/lessons.md' with the pattern
-Write rules for yourself that prevent the same mistake
-Ruthlessly iterate on these lessons until mistake rate drops
-Review lessons at session start for relevant project
+After ANY correction from the user:
+- Update `tasks/3d-lessons.md` with incident (what happened, root cause, fix, rule)
+- Add the rule to the Critical Rules section of 3d-lessons.md
+- Update CLAUDE.md Common Mistakes table if broadly applicable
+- Write rules for yourself that prevent the same mistake
+- Ruthlessly iterate on these lessons until mistake rate drops
+- Review `tasks/3d-lessons.md` at session start for relevant project
 
 ### 4. Verification Before Done
 Never mark a task complete without proving it works
@@ -47,6 +55,81 @@ Zero context switching required from the user
 **Simplicity First**: Make every change as simple as possible. Impact minimal code.
 **No Laziness**: Find root causes. No temporary fixes. Senior developer standards.
 **Minimal Impact**: Changes should only touch what's necessary. Avoid introducing bugs.
+
+---
+
+## Available MCP Tools for 3D
+
+### OpenSCAD MCP (`openscad`)
+- Render .scad files directly without shelling out
+- Export STL/3MF with validation
+- Syntax checking and dimension analysis
+- **Use for**: all parametric design, render verification, STL export
+
+### Blender MCP (`blender`)
+- Control Blender from Claude for organic shapes
+- Mesh operations, sculpting, UV mapping
+- **Use for**: figurine editing, mesh repair, organic modeling
+
+### PrintPal (browser tool)
+- [printpal.io/3dgenerator](https://printpal.io/3dgenerator) — 10 free generations/month
+- Text/image → STL in 60 seconds
+- **Use for**: generating figurine STLs from descriptions
+
+### Workflow: When to Use What
+| Task | Tool |
+|------|------|
+| Parametric parts (enclosures, bases, mounts) | OpenSCAD MCP |
+| Figurine generation from text/image | PrintPal browser |
+| Mesh repair, organic shapes | Blender MCP |
+| STL validation | OpenSCAD MCP (`Simple: yes` check) |
+| Print settings | Bambu Studio (Single_Color.3mf profile) |
+
+---
+
+## Smooth Print Design Rules (Bambu A1)
+
+### Design for Surface Quality
+| Rule | Why |
+|------|-----|
+| Chamfer bottom edges, fillet top edges | Bottom fillets create overhangs that sag |
+| Wall thickness = multiples of 0.4mm | 0.8, 1.2, 1.6mm — avoids gap-fill artifacts |
+| Add a sharp vertical edge for seam hiding | Seam aligns to corners, becomes invisible |
+| Flat bottom, smooth face on build plate | Plate side is always smoothest surface |
+| 4 walls minimum for cosmetic parts | Prevents infill pattern ghosting through walls |
+| Monotonic top surface pattern | Lines go one direction — no scarring |
+| No features smaller than 2× nozzle width (0.8mm) | Prints as blobs |
+| Gradual curves need 0.12mm layers | Reduces stairstepping on domes/curves |
+
+### Bambu A1 Cosmetic Profile
+```
+Layer height:        0.12mm
+Outer wall speed:    30 mm/s (inner: 80-100 mm/s)
+Wall count:          4
+Seam:                Aligned + Scarf joint (15-25mm length)
+Top surface:         Monotonic
+Ironing:             On (10% flow, 15 mm/s)
+Fan:                 100% after layer 3
+Nozzle temp:         200-210°C (lower = less stringing)
+Bed temp:            55°C (higher = elephant's foot)
+Plate:               Smooth PEI for glass-smooth bottom
+Wall generator:      Arachne
+Outer wall accel:    1000-2000 mm/s²
+```
+
+### A1-Specific Quirks
+- **Bed-slinger** — tall parts get Y-axis ringing. Keep cosmetic parts short or reduce speed
+- **Retraction**: Stock 0.8mm at 30mm/s is good. Don't increase — causes clogs
+- **Input shaper**: Run calibration if ghosting appears
+- **Y-belt tension**: Check periodically. Loose belt = wavy walls
+
+### Post-Processing (Quick Finish)
+1. Sand at 220 grit (30 seconds per face)
+2. Spray filler primer (2 light coats, 10 min between)
+3. Sand at 400 grit
+4. Final paint coat
+5. **Total: 30-45 min for professional finish**
+6. **XTC-3D** epoxy coating: glossy, layer-free in one coat (adds ~0.5mm)
 
 ---
 
@@ -146,9 +229,98 @@ Tagline options:
 
 ---
 
+## 3D Design System (OpenSCAD + FDM)
+
+### Design Session Protocol
+1. **Read first**: ALWAYS read the existing .scad file top-to-bottom before changing anything
+2. **Parameters at top**: Never hardcode dimensions inline — all values in the parameter block
+3. **Derived values**: Use `inner_dia = base_dia - wall * 2` not raw numbers
+4. **Version files**: `part-v3.scad`, never overwrite the original
+5. **One change per iteration**: When debugging fit, change ONE variable per print
+6. **Mark uncertainty**: `// UNCONFIRMED — assumed from [source]` for unmeasured values
+
+### Before ANY STL Export (Mandatory Checklist)
+- [ ] `Simple: yes` in OpenSCAD console (F6 render, not F5 preview)
+- [ ] No overhangs > 45° without support design
+- [ ] No cantilevers > 2mm unsupported
+- [ ] No floating geometry (disconnected shells from CSG)
+- [ ] Flat bottom surface for bed adhesion (minimum 10mm² contact)
+- [ ] Part oriented for printing (smooth face on bed, features pointing up)
+- [ ] Wall thickness ≥ 1.2mm everywhere
+- [ ] Hole diameters have +0.2mm compensation for FDM shrink
+- [ ] All screw holes are through-holes (not blind from wrong CSG)
+- [ ] Render a preview image and visually verify before delivering to user
+
+### STL Mesh Modification Rules
+**Golden rule: modify the .scad source, not the STL. STL editing is lossy.**
+
+When modifying an existing STL with CSG:
+1. **Fill holes**: Use blocks that extend WELL beyond the hole (±10mm past edges)
+2. **Don't change the shape**: Never add geometry that alters the original surface profile
+3. **Trim flush**: After filling, trim to the original body outline
+4. **Union overlap**: Ensure ≥0.5mm overlap when unioning — touching faces = non-manifold
+5. **Verify after every operation**: Re-render, check `Simple: yes`, visually inspect
+6. **Accept limitations**: Some STL features (internal retainers, recesses) can't be filled with CSG — document what the switch/component bezel will cover
+
+### FDM Print-Readiness (Bambu A1)
+| Check | Rule |
+|-------|------|
+| Walls | ≥1.6mm (4 perimeters at 0.4mm nozzle) for strength |
+| Infill | 10-15% gyroid for display, 30%+ for functional |
+| First layer | Flat, full contact, 50mm/s speed |
+| Bed | Textured PEI plate, clean with IPA |
+| Brim | Auto 5mm for parts > 80mm |
+| Supports | OFF unless overhangs > 45° exist |
+| Orientation | Smooth/cosmetic face on bed, features up |
+| Seam | Back or nearest |
+
+### Physical Test Fit Protocol
+1. **Before printing**: State what you're testing (one hypothesis)
+2. **After printing**: Measure with calipers, compare to CAD dimensions
+3. **Record**: Date, measured vs designed, pass/fail per criterion
+4. **Max 2 variables** changed per iteration
+5. **After 3 failed iterations**: STOP — re-measure the target geometry from scratch
+6. **Keep every version's STL** — never overwrite
+
+### Common Mistakes to Avoid
+| Mistake | Rule |
+|---------|------|
+| Filling holes changes body shape | Fill blocks must not extend beyond the original surface — use intersection with original if needed |
+| Adding screw holes that don't exist | Count holes in original STL render BEFORE modifying |
+| Wrong speaker/hole center | Measure from mesh data, don't estimate from renders |
+| Grille slots overflow circle | Use `intersection()` with clip cylinder, not per-slot bounds check |
+| Ridge/feature creates cantilever | Orient for print: feature UP, flat face DOWN |
+| Reducing box dimensions without checking components fit | NEVER change bh/bw/bd without verifying ALL components still fit |
+| Fill block covers screw holes | Check which holes the fill covers, re-cut at exact original positions |
+
+---
+
 ## Lessons Learned (UmbaLabs-Specific)
 
-*(Add lessons here as the project progresses)*
+### 2026-03-25: STL Mesh Modification — Fill Blocks Destroy Shape
+**Mistake**: Adding cubic fill blocks to seal circular holes in STL meshes changed the body's rounded surface profile
+**Correction**: Either (a) make the rectangle large enough to fully contain the circle, or (b) accept small remnants that the component bezel covers
+**Rule**: When modifying an STL, NEVER add geometry that changes the original surface. Cut-only operations preserve shape.
+
+### 2026-03-25: Screw Hole Count Verification
+**Mistake**: Added 6 screw holes when the original only had 4 — kept adding fake "re-cut" holes at wrong positions
+**Correction**: Render the original STL front-on, count exact holes, note positions before modifying
+**Rule**: Before modifying any part, render the ORIGINAL from the relevant angle and count/document every feature
+
+### 2026-03-25: Speaker Center Offset
+**Mistake**: Assumed speaker opening center at X=-7 without verifying, causing grille offset from ridge
+**Correction**: Run mesh analysis or overlay renders to find actual center
+**Rule**: For any circular feature, verify center coordinates from the mesh before building geometry around it
+
+### 2026-03-15: Bayonet Tab vs Channel Clearance
+**Mistake**: Tab height exceeded channel height — tab hit the channel roof during rotation and jammed
+**Correction**: Calculate global Z positions for both tab and channel, verify clearance ≥0.3mm on all sides
+**Rule**: For any moving/engaging parts, write the Z-stack math in comments and verify clearance before exporting
+
+### 2026-03-14: Lid Too Thick / Solid Lip Melting
+**Mistake**: Made lid lip a solid 41mm cylinder — overheated during printing, caused melting
+**Correction**: Use a thick-walled tube (2mm walls) instead of solid — cools properly between passes
+**Rule**: Never make cylindrical features > 20mm diameter solid — use tube walls for proper FDM cooling
 
 ### Template
 ```
